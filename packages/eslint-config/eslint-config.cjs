@@ -3,6 +3,7 @@ module.exports = {
     'airbnb-base',
     'plugin:@endo/recommended',
     'plugin:jsdoc/recommended',
+    'plugin:ava/recommended',
     'prettier',
   ],
   plugins: ['import'],
@@ -46,6 +47,11 @@ module.exports = {
         },
       },
     ],
+
+    // We allow disabled tests in master
+    'ava/no-skip-test': 'off',
+    // Contrary to recommendation https://github.com/avajs/ava/blob/main/docs/recipes/typescript.md#typing-tcontext
+    'ava/use-test': 'off',
 
     // Work around https://github.com/import-js/eslint-plugin-import/issues/1810
     'import/no-unresolved': ['error', { ignore: ['ava'] }],

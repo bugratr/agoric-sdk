@@ -1,15 +1,15 @@
-/* global setTimeout, FinalizationRegistry, setImmediate, process */
-import '@endo/init/debug.js';
+/* global setTimeout, WeakRef, setImmediate, process */
+
+import '@endo/init';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import test from 'ava';
 
 import * as proc from 'child_process';
 import * as os from 'os';
-import fs from 'fs';
-import path from 'path';
+import fs, { unlinkSync } from 'fs';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { tmpName } from 'tmp';
+import tmp from 'tmp';
 
 import { xsnap } from '../src/xsnap.js';
 import { recordXSnap } from '../src/replay.js';
@@ -17,46 +17,46 @@ import { ExitCode, ErrorCode } from '../api.js';
 
 import { options, decode, encode, loader } from './message-tools.js';
 
-const io = { spawn: proc.spawn, os: os.type(), fs, tmpName }; // WARNING: ambient
+const io = { spawn: proc.spawn, os: os.type() }; // WARNING: ambient
 const ld = loader(import.meta.url);
 
 test('evaluate and issueCommand', async t => {
   const opts = options(io);
-  const vat = await xsnap(opts);
+  const vat = xsnap(opts);
   await vat.evaluate(
     `issueCommand(new TextEncoder().encode("Hello, World!").buffer);`,
   );
   await vat.close();
-  t.deepEqual(['Hello, World!'], opts.messages);
+  t.deepEqual(opts.messages, ['Hello, World!']);
 });
 
 test('evaluate until idle', async t => {
   const opts = options(io);
-  const vat = await xsnap(opts);
+  const vat = xsnap(opts);
   await vat.evaluate(`
     (async () => {
       issueCommand(new TextEncoder().encode("Hello, World!").buffer);
     })();
   `);
   await vat.close();
-  t.deepEqual(['Hello, World!'], opts.messages);
+  t.deepEqual(opts.messages, ['Hello, World!']);
 });
 
 test('evaluate infinite loop', async t => {
   const opts = options(io);
-  const vat = await xsnap(opts);
+  const vat = xsnap(opts);
   t.teardown(vat.terminate);
   await t.throwsAsync(vat.evaluate(`for (;;) {}`), {
     code: ExitCode.E_TOO_MUCH_COMPUTATION,
     instanceOf: ErrorCode,
   });
-  t.deepEqual([], opts.messages);
+  t.deepEqual(opts.messages, []);
 });
 
-// TODO: Re-enable when this doesn't take 3.6 seconds.
+// TODO: Reenable when this doesn't take 3.6 seconds.
 test('evaluate promise loop', async t => {
   const opts = options(io);
-  const vat = await xsnap(opts);
+  const vat = xsnap(opts);
   t.teardown(vat.terminate);
   await t.throwsAsync(
     vat.evaluate(`
@@ -70,12 +70,12 @@ test('evaluate promise loop', async t => {
       instanceOf: ErrorCode,
     },
   );
-  t.deepEqual([], opts.messages);
+  t.deepEqual(opts.messages, []);
 });
 
 test('evaluate and report', async t => {
   const opts = options(io);
-  const vat = await xsnap(opts);
+  const vat = xsnap(opts);
   const result = await vat.evaluate(`(() => {
     const report = {};
     Promise.resolve('hi').then(v => {
@@ -85,12 +85,12 @@ test('evaluate and report', async t => {
   })()`);
   await vat.close();
   const { reply } = result;
-  t.deepEqual('hi', decode(reply));
+  t.is(decode(reply), 'hi');
 });
 
 test('evaluate error', async t => {
   const opts = options(io);
-  const vat = await xsnap(opts);
+  const vat = xsnap(opts);
   await vat
     .evaluate(`***`)
     .then(_ => {
@@ -108,7 +108,7 @@ test('evaluate does not throw on unhandled rejections', async t => {
   // It's important that we can observe them using xsbug.
   // We can confirm this by running xsbug while running this test.
   for await (const debug of [false, true]) {
-    const vat = await xsnap({ ...opts, debug });
+    const vat = xsnap({ ...opts, debug });
     t.teardown(() => vat.terminate());
     await t.notThrowsAsync(vat.evaluate(`Promise.reject(1)`));
   }
@@ -116,7 +116,7 @@ test('evaluate does not throw on unhandled rejections', async t => {
 
 test('idle includes setImmediate too', async t => {
   const opts = options(io);
-  const vat = await xsnap(opts);
+  const vat = xsnap(opts);
   await vat.evaluate(`
     const send = it => issueCommand(new TextEncoder().encode(it).buffer);
     setImmediate(() => send("end of crank"));
@@ -124,56 +124,48 @@ test('idle includes setImmediate too', async t => {
     send("turn 1");
   `);
   await vat.close();
-  t.deepEqual(['turn 1', 'turn 2', 'end of crank'], opts.messages);
+  t.deepEqual(opts.messages, ['turn 1', 'turn 2', 'end of crank']);
 });
 
 test('print - start compartment only', async t => {
   const opts = options(io);
-  const vat = await xsnap(opts);
+  const vat = xsnap(opts);
   await vat.evaluate(`
     const send = it => issueCommand(new TextEncoder().encode(it).buffer);
     print('print:', 123);
     try {
-      (new Compartment()).evaluate('print("456")');
-    } catch (err) {
-      send('err:' + err);
+      (new Compartment()).evalate('print("456")');
+    } catch (_err) {
+      send('no print in Compartment');
     }
   `);
   await vat.close();
-  t.is(opts.messages.length, 1);
-  t.regex(
-    opts.messages[0],
-    /^err:ReferenceError: [^:]+: get print: undefined variable$/,
-  );
+  t.deepEqual(opts.messages, ['no print in Compartment']);
 });
 
 test('gc - start compartment only', async t => {
   const opts = options(io);
-  const vat = await xsnap(opts);
+  const vat = xsnap(opts);
   await vat.evaluate(`
     gc();
     const send = it => issueCommand(new TextEncoder().encode(it).buffer);
     gc();
     try {
-      (new Compartment()).evaluate('gc()');
-    } catch (err) {
-      send('err:' + err);
+      (new Compartment()).evalate('gc()');
+    } catch (_err) {
+      send('no gc in Compartment');
     }
   `);
   await vat.close();
-  t.is(opts.messages.length, 1);
-  t.regex(
-    opts.messages[0],
-    /^err:ReferenceError: [^:]+: get gc: undefined variable$/,
-  );
+  t.deepEqual(opts.messages, ['no gc in Compartment']);
 });
 
 test('run script until idle', async t => {
   const opts = options(io);
-  const vat = await xsnap(opts);
+  const vat = xsnap(opts);
   await vat.execute(ld.resolve('fixture-xsnap-script.js'));
   await vat.close();
-  t.deepEqual(['Hello, World!'], opts.messages);
+  t.deepEqual(opts.messages, ['Hello, World!']);
 });
 
 test('issueCommand is synchronous inside, async outside', async t => {
@@ -185,14 +177,14 @@ test('issueCommand is synchronous inside, async outside', async t => {
     await Promise.resolve(null);
     return encode(`${number + 1}`);
   }
-  const vat = await xsnap({ ...options(io), handleCommand });
+  const vat = xsnap({ ...options(io), handleCommand });
   await vat.evaluate(`
     const response = issueCommand(new TextEncoder().encode('0').buffer);
     const number = +new TextDecoder().decode(response);
     issueCommand(new TextEncoder().encode(String(number + 1)).buffer);
   `);
   await vat.close();
-  t.deepEqual([0, 2], messages);
+  t.deepEqual(messages, [0, 2]);
 });
 
 test('deliver a message', async t => {
@@ -201,7 +193,7 @@ test('deliver a message', async t => {
     messages.push(+decode(message));
     return new Uint8Array();
   }
-  const vat = await xsnap({ ...options(io), handleCommand });
+  const vat = xsnap({ ...options(io), handleCommand });
   await vat.evaluate(`
     function handleCommand(message) {
       const number = +new TextDecoder().decode(message);
@@ -212,7 +204,7 @@ test('deliver a message', async t => {
   await vat.issueStringCommand('1');
   await vat.issueStringCommand('2');
   await vat.close();
-  t.deepEqual([1, 2, 3], messages);
+  t.deepEqual(messages, [1, 2, 3]);
 });
 
 test('receive a response', async t => {
@@ -221,16 +213,16 @@ test('receive a response', async t => {
     messages.push(+decode(message));
     return new Uint8Array();
   }
-  const vat = await xsnap({ ...options(io), handleCommand });
+  const vat = xsnap({ ...options(io), handleCommand });
   await vat.evaluate(`
     function handleCommand(message) {
       const number = +new TextDecoder().decode(message);
       return new TextEncoder().encode(String(number + 1)).buffer;
     };
   `);
-  t.is('1', (await vat.issueStringCommand('0')).reply);
-  t.is('2', (await vat.issueStringCommand('1')).reply);
-  t.is('3', (await vat.issueStringCommand('2')).reply);
+  t.is((await vat.issueStringCommand('0')).reply, '1');
+  t.is((await vat.issueStringCommand('1')).reply, '2');
+  t.is((await vat.issueStringCommand('2')).reply, '3');
   await vat.close();
 });
 
@@ -246,7 +238,7 @@ test('serialize concurrent messages', async t => {
     messages.push(+decode(message));
     return new Uint8Array();
   }
-  const vat = await xsnap({ ...options(io), handleCommand });
+  const vat = xsnap({ ...options(io), handleCommand });
   await vat.evaluate(`
     globalThis.handleCommand = message => {
       const number = +new TextDecoder().decode(message);
@@ -258,79 +250,33 @@ test('serialize concurrent messages', async t => {
   t.deepEqual([...count(101, 1)], messages);
 });
 
-const writeAndReadSnapshot = async (t, snapshotUseFs) => {
+test('write and read snapshot', async t => {
+  const work = tmp.fileSync({ postfix: '.xss' });
+  t.teardown(() => work.removeCallback());
+
   const messages = [];
   async function handleCommand(message) {
     messages.push(decode(message));
     return new Uint8Array();
   }
 
-  const vat0 = await xsnap({ ...options(io), handleCommand, snapshotUseFs });
+  const snapshot = work.name;
+  t.log({ snapshot });
+
+  const vat0 = xsnap({ ...options(io), handleCommand });
   await vat0.evaluate(`
     globalThis.hello = "Hello, World!";
   `);
+  await vat0.snapshot(snapshot);
+  await vat0.close();
 
-  const vat1 = await xsnap({
-    ...options(io),
-    handleCommand,
-    snapshotStream: vat0.makeSnapshotStream(),
-    snapshotUseFs: true,
-  });
+  const vat1 = xsnap({ ...options(io), handleCommand, snapshot });
   await vat1.evaluate(`
     issueCommand(new TextEncoder().encode(hello).buffer);
   `);
   await vat1.close();
 
-  await vat0.evaluate(`
-    globalThis.hello += " Bienvenue!";
-  `);
-
-  const snapshotStream2 = vat0.makeSnapshotStream();
-  const vat2 = await xsnap({
-    ...options(io),
-    handleCommand,
-    snapshotStream: snapshotStream2,
-  });
-  await vat2.evaluate(`
-    issueCommand(new TextEncoder().encode(hello).buffer);
-  `);
-  await vat2.close();
-
-  await vat0.close();
-  t.deepEqual(['Hello, World!', 'Hello, World! Bienvenue!'], messages);
-};
-test('write and read snapshot (use FS)', writeAndReadSnapshot, true);
-test('write and read snapshot (use stream)', writeAndReadSnapshot, false);
-
-test('execute immediately after makeSnapshotStream', async t => {
-  const messages = [];
-  async function handleCommand(message) {
-    messages.push(decode(message));
-    return new Uint8Array();
-  }
-
-  const vat0 = await xsnap({ ...options(io), handleCommand });
-  void vat0.evaluate(`
-    globalThis.when = 'before';
-  `);
-  const snapshotStream = vat0.makeSnapshotStream();
-
-  void vat0.evaluate(`
-    globalThis.when = 'after';
-  `);
-
-  const vat1 = await xsnap({
-    ...options(io),
-    handleCommand,
-    snapshotStream,
-  });
-  await vat0.close();
-  void vat1.evaluate(`
-    issueCommand(new TextEncoder().encode(when).buffer);
-  `);
-  await vat1.close();
-
-  t.deepEqual(['before'], messages);
+  t.deepEqual(messages, ['Hello, World!']);
 });
 
 function delay(ms) {
@@ -338,7 +284,7 @@ function delay(ms) {
 }
 
 test('fail to send command to already-closed xsnap worker', async t => {
-  const vat = await xsnap({ ...options(io) });
+  const vat = xsnap({ ...options(io) });
   await vat.close();
   await vat.evaluate(``).catch(err => {
     t.is(err.message, 'xsnap test worker exited');
@@ -346,7 +292,7 @@ test('fail to send command to already-closed xsnap worker', async t => {
 });
 
 test('fail to send command to already-terminated xsnap worker', async t => {
-  const vat = await xsnap({ ...options(io) });
+  const vat = xsnap({ ...options(io) });
   await vat.terminate();
   await vat.evaluate(``).catch(err => {
     t.is(err.message, 'xsnap test worker exited due to signal SIGTERM');
@@ -354,7 +300,7 @@ test('fail to send command to already-terminated xsnap worker', async t => {
 });
 
 test('fail to send command to terminated xsnap worker', async t => {
-  const vat = await xsnap({ ...options(io), meteringLimit: 0 });
+  const vat = xsnap({ ...options(io), meteringLimit: 0 });
   const hang = t.throwsAsync(vat.evaluate(`for (;;) {}`), {
     instanceOf: Error,
     message: /^(write EPIPE|xsnap test worker exited due to signal SIGTERM)$/,
@@ -365,7 +311,7 @@ test('fail to send command to terminated xsnap worker', async t => {
 });
 
 test('abnormal termination', async t => {
-  const vat = await xsnap({ ...options(io), meteringLimit: 0 });
+  const vat = xsnap({ ...options(io), meteringLimit: 0 });
   const hang = t.throwsAsync(vat.evaluate(`for (;;) {}`), {
     instanceOf: Error,
     message: 'xsnap test worker exited due to signal SIGTERM',
@@ -378,7 +324,7 @@ test('abnormal termination', async t => {
 });
 
 test('normal close of pathological script', async t => {
-  const vat = await xsnap({ ...options(io), meteringLimit: 0 });
+  const vat = xsnap({ ...options(io), meteringLimit: 0 });
   const hang = vat.evaluate(`for (;;) {}`).then(
     () => t.fail('command should not complete'),
     err => {
@@ -395,18 +341,15 @@ test('normal close of pathological script', async t => {
 });
 
 async function runToGC() {
-  let collected = false;
-  const fr = new FinalizationRegistry(() => {
-    collected = true;
-  });
-  fr.register({}, undefined);
-  const trashCan = [];
+  const trashCan = [{}];
+  const wr = new WeakRef(trashCan[0]);
+  trashCan[0] = undefined;
 
   let qty;
-  for (qty = 0; !collected; qty += 1) {
+  for (qty = 0; wr.deref(); qty += 1) {
     // eslint-disable-next-line no-await-in-loop
     await new Promise(setImmediate);
-    trashCan.push(Array(10_000).map(() => ({})));
+    trashCan[1] = Array(10_000).map(() => ({}));
   }
   return qty;
 }
@@ -418,8 +361,7 @@ function pickXSnap(env = process.env) {
     console.log('SwingSet xs-worker tracing:', { XSNAP_TEST_RECORD });
     let serial = 0;
     doXSnap = opts => {
-      const workerTrace =
-        path.resolve(XSNAP_TEST_RECORD, String(serial)) + path.sep;
+      const workerTrace = `${XSNAP_TEST_RECORD}/${serial}/`;
       serial += 1;
       fs.mkdirSync(workerTrace, { recursive: true });
       return recordXSnap(opts, workerTrace, {
@@ -434,7 +376,7 @@ test('GC after snapshot vs restore', async t => {
   const xsnapr = pickXSnap();
 
   const opts = { ...options(io), name: 'original', meteringLimit: 0 };
-  const worker = await xsnapr(opts);
+  const worker = xsnapr(opts);
   t.teardown(worker.terminate);
 
   await worker.evaluate(`
@@ -454,12 +396,13 @@ test('GC after snapshot vs restore', async t => {
 
   const beforeClone = await nextGC(worker, opts);
 
-  const snapshotStream = worker.makeSnapshotStream();
+  const snapshot = './bloated.xss';
+  await worker.snapshot(snapshot);
+  t.teardown(() => unlinkSync(snapshot));
 
-  const optClone = { ...options(io), name: 'clone', snapshotStream };
-  const clone = await xsnapr(optClone);
-  await clone.isReady();
-  t.log('cloned');
+  const optClone = { ...options(io), name: 'clone', snapshot };
+  const clone = xsnapr(optClone);
+  t.log('cloned', { snapshot });
   t.teardown(clone.terminate);
 
   let workerGC = beforeClone;
@@ -475,11 +418,4 @@ test('GC after snapshot vs restore', async t => {
   }
   t.log({ beforeClone, workerGC, cloneGC, iters });
   t.is(workerGC, cloneGC);
-});
-
-test('bad option.name', async t => {
-  const opts = Object.freeze({ ...options(io), name: '--sneaky' });
-  await t.throwsAsync(() => xsnap(opts), {
-    message: /cannot start with hyphen/,
-  });
 });

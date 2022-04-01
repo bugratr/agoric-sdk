@@ -48,8 +48,6 @@ module.exports = {
       },
     ],
 
-    // We allow disabled tests in master
-    'ava/no-skip-test': 'off',
     // Contrary to recommendation https://github.com/avajs/ava/blob/main/docs/recipes/typescript.md#typing-tcontext
     'ava/use-test': 'off',
 

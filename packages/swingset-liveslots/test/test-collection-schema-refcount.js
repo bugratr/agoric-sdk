@@ -91,13 +91,13 @@ test(
 test('virtual collection shape holds virtual', shapetest, 'virtual', 'virtual');
 test('virtual collection shape holds durable', shapetest, 'virtual', 'durable');
 
-test.skip(
+test.failing(
   'durable collection shape holds ephmeral',
   shapetest,
   'durable',
   'ephemeral',
 );
-test.skip(
+test.failing(
   'durable collection shape holds virtual',
   shapetest,
   'durable',

@@ -59,13 +59,7 @@ test.before(async t => {
   t.context = { scenario2, walletTool, pspawnAgd, bootstrapAddr, soloAddr };
 });
 
-// SKIP: struggling with timing issues resulting in one of...
-// Error: cannot grab 250000uist coins: 0uist is smaller than 250000uist: insufficient funds
-// error: code = NotFound desc = account agoric1mhu... not found
-// Sometimes I can get this test to work alone, but not
-// if run with the test above.
-// TODO: https://github.com/Agoric/agoric-sdk/issues/6766
-test.skip('integration test: smart wallet provision', async t => {
+test('integration test: smart wallet provision', async t => {
   const { scenario2, walletTool, soloAddr } = t.context;
 
   const enoughBlocksToProvision = 7;

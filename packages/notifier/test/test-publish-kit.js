@@ -395,6 +395,7 @@ test('durable publish kit upgrade trauma (full-vat integration)', async t => {
   const eachIterator2 = await run('messageVatObject', [
     { presence: eachIterable, methodName: Symbol.asyncIterator },
   ]);
+  // eslint-disable-next-line ava/prefer-async-await
   const assertDisconnection = (p, label) => {
     const expected = {
       incarnationNumber: 0,
@@ -402,7 +403,7 @@ test('durable publish kit upgrade trauma (full-vat integration)', async t => {
       upgradeMessage: 'vat upgraded',
     };
     return p.then(
-      (...args) => t.deepEqual(args, undefined, `${label} must be rejected`),
+      (...args) => t.is(args, undefined, `${label} must be rejected`),
       failure =>
         t.deepEqual(failure, expected, `${label} must indicate disconnection`),
     );
@@ -458,7 +459,7 @@ test('durable publish kit upgrade trauma (full-vat integration)', async t => {
 // TODO: Find a way to test virtual object rehydration
 // without the overhead of vats.
 // https://github.com/Agoric/agoric-sdk/pull/6502#discussion_r1008492055
-test.skip('durable publish kit upgrade trauma', async t => {
+test.failing('durable publish kit upgrade trauma', async t => {
   const baggage = makeBaggage();
   const makeDurablePublishKit = prepareDurablePublishKit(
     baggage,

@@ -1,3 +1,4 @@
+/* eslint-disable ava/assertion-arguments -- the standard diff is unreadable */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import '@endo/init/debug.js';
 import test from 'ava';

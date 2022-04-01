@@ -412,7 +412,7 @@ const makeScenario = async (t, { env = process.env } = {}) => {
   };
 };
 
-test.skip('Benefactor can add to reserve', async t => {
+test.failing('Benefactor can add to reserve', async t => {
   const s = await makeScenario(t);
   await s.startDevNet();
   await s.provisionMembers();
@@ -427,7 +427,7 @@ test.skip('Benefactor can add to reserve', async t => {
   t.deepEqual(result, 'added Collateral to the Reserve');
 });
 
-test.skip('voters get invitations', async t => {
+test.failing('voters get invitations', async t => {
   const s = await makeScenario(t);
   await s.startDevNet();
   const purses = await s.provisionMembers();
@@ -459,7 +459,7 @@ test.skip('voters get invitations', async t => {
   );
 });
 
-test.skip('assets are in Vaults', async t => {
+test.failing('assets are in Vaults', async t => {
   const s = await makeScenario(t);
   await s.startDevNet();
   await s.provisionMembers();
@@ -491,7 +491,7 @@ test.skip('assets are in Vaults', async t => {
   });
 });
 
-test.skip('Committee can raise debt limit', async t => {
+test.failing('Committee can raise debt limit', async t => {
   const s = await makeScenario(t);
   await s.startDevNet();
   const invitationPurses = await s.provisionMembers();

@@ -95,7 +95,7 @@ test('upgrade vat-board', async t => {
   t.is(actualThing, thing, 'must get original value back');
 });
 
-test.skip('upgrade bootstrap vat', async t => {
+test.failing('upgrade bootstrap vat', async t => {
   const { bfile } = t.context;
   const bundles = {
     chain: { sourceSpec: bfile('../src/core/boot-chain.js') },

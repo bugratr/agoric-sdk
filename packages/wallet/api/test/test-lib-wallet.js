@@ -1342,6 +1342,7 @@ test('addOffer invitationQuery', async t => {
           value: 1n,
         },
       },
+      multiples: 1n,
       exit: {
         onDemand: null,
       },
@@ -1463,6 +1464,7 @@ test('addOffer offer.invitation', async t => {
           value: 1n,
         },
       },
+      multiples: 1n,
       exit: {
         onDemand: null,
       },

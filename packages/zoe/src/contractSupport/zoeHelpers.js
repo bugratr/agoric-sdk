@@ -10,6 +10,7 @@ import {
   fromOnly,
   toOnly,
 } from './atomicTransfer.js';
+import { AmountKeywordRecordShape } from '../typeGuards.js';
 
 export const defaultAcceptanceMsg = `The offer has been accepted. Once the contract has been completed, please check your payout`;
 
@@ -205,6 +206,12 @@ export const depositToSeat = async (zcf, recipientSeat, amounts, payments) => {
   const invitation = zcf.makeInvitation(
     reallocateAfterDeposit,
     'temporary seat for deposit',
+    undefined,
+    harden({
+      give: AmountKeywordRecordShape,
+      want: {},
+      exit: { onDemand: null },
+    }),
   );
   const proposal = harden({ give: amounts });
   harden(payments);

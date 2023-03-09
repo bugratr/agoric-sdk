@@ -113,11 +113,17 @@ export const isAfterDeadlineExitRule = exit => {
   return exitKey === 'afterDeadline';
 };
 
+export const AnyTermsShape = M.splitRecord({
+  issuers: M.recordOf(KeywordShape, IssuerShape),
+  brands: M.recordOf(KeywordShape, BrandShape),
+});
+
 export const InvitationElementShape = M.splitRecord({
   description: M.string(),
   handle: InvitationHandleShape,
   instance: InstanceHandleShape,
   installation: InstallationShape,
+  terms: AnyTermsShape,
 });
 
 export const OfferHandlerI = M.interface('OfferHandler', {
@@ -318,7 +324,7 @@ export const ZoeServiceI = M.interface('ZoeService', {
   install: M.call(M.any()).returns(M.promise()),
   installBundleID: M.call(M.string()).returns(M.promise()),
   startInstance: M.call(M.eref(InstallationShape))
-    .optional(IssuerPKeywordRecordShape, M.any(), M.any())
+    .optional(IssuerPKeywordRecordShape, M.key(), M.opt(M.record()))
     .returns(M.promise()),
   offer: M.call(M.eref(InvitationShape))
     .optional(ProposalShape, PaymentPKeywordRecordShape, M.any())

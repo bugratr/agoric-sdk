@@ -1,7 +1,7 @@
 import { AmountMath, AssetKind } from '@agoric/ertp';
 import { CONTRACT_ELECTORATE, ParamTypes } from '@agoric/governance';
 import { makeStorageNodeChild } from '@agoric/internal/src/lib-chainStorage.js';
-import { makeRatio } from '@agoric/zoe/src/contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 import { E } from '@endo/far';
 import { Stable } from '@agoric/vats/src/tokens.js';
 import { deeplyFulfilledObject } from '@agoric/internal';

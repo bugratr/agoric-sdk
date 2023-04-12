@@ -2,10 +2,7 @@ import { Far } from '@endo/marshal';
 import { AmountMath } from '@agoric/ertp';
 
 // Eventually will be importable from '@agoric/zoe-contract-support'
-import {
-  assertIssuerKeywords,
-  assertProposalShape,
-} from '../../../src/contractSupport/index.js';
+import { assertIssuerKeywords, assertProposalShape } from '@agoric/contracts';
 
 const { details: X } = assert;
 

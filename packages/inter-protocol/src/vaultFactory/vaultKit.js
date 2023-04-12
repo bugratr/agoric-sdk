@@ -9,7 +9,7 @@ const trace = makeTracer('VK', false);
  * Wrap the VaultHolder duration object in a record suitable for the result of an invitation.
  *
  * @param {import('@agoric/ertp').Baggage} baggage
- * @param {import('@agoric/zoe/src/contractSupport/recorder.js').MakeRecorderKit} makeRecorderKit
+ * @param {import('@agoric/contracts').MakeRecorderKit} makeRecorderKit
  */
 export const prepareVaultKit = (baggage, makeRecorderKit) => {
   trace('prepareVaultKit', [...baggage.keys()]);

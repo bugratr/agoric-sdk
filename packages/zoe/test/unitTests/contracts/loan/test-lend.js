@@ -9,7 +9,7 @@ import { AmountMath } from '@agoric/ertp';
 import { setupLoanUnitTest, checkDescription } from './helpers.js';
 
 import { makeLendInvitation } from '../../../../src/contracts/loan/lend.js';
-import { makeRatio } from '../../../../src/contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 
 test('makeLendInvitation', async t => {
   const { zcf, zoe, loanKit } = await setupLoanUnitTest();

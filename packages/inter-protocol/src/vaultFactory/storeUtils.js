@@ -9,11 +9,7 @@ import {
   makeDecodePassable,
   makeEncodePassable,
 } from '@endo/marshal/src/encodePassable.js';
-import {
-  getAmountIn,
-  getAmountOut,
-  natSafeMath,
-} from '@agoric/zoe/src/contractSupport/index.js';
+import { getAmountIn, getAmountOut, natSafeMath } from '@agoric/contracts';
 import { makeTracer } from '@agoric/internal';
 
 const { multiply } = natSafeMath;

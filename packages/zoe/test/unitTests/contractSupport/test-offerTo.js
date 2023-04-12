@@ -9,7 +9,7 @@ import bundleSource from '@endo/bundle-source';
 import { setup } from '../setupBasicMints.js';
 import { makeZoeKit } from '../../../src/zoeService/zoe.js';
 import { makeFakeVatAdmin } from '../../../tools/fakeVatAdmin.js';
-import { offerTo, swapExact } from '../../../src/contractSupport/zoeHelpers.js';
+import { offerTo, swapExact } from '@agoric/contracts';
 import { makeOffer } from '../makeOffer.js';
 
 const filename = new URL(import.meta.url).pathname;

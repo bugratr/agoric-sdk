@@ -1,14 +1,14 @@
 // @jessie-check
+import {
+  assertProposalShape,
+  atomicRearrange,
+  ceilMultiplyBy,
+} from '@agoric/contracts';
 import { AmountMath, AssetKind } from '@agoric/ertp';
 import { bindAllMethods, makeTracer } from '@agoric/internal';
 import { makePublishKit } from '@agoric/notifier';
 import { M, matches } from '@agoric/store';
 import { defineKindMulti } from '@agoric/vat-data';
-import {
-  assertProposalShape,
-  atomicRearrange,
-} from '@agoric/zoe/src/contractSupport/index.js';
-import { ceilMultiplyBy } from '@agoric/zoe/src/contractSupport/ratio.js';
 import { addSubtract, assertOnlyKeys } from '../contractSupport.js';
 import { calculateCurrentDebt, reverseInterest } from '../interest-math.js';
 import { ManagerKW as KW } from './constants.js';

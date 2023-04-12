@@ -4,7 +4,7 @@ import {
   swap,
   assertIssuerKeywords,
   assertProposalShape,
-} from '../../../src/contractSupport/index.js';
+} from '@agoric/contracts';
 
 /**
  * This is an atomic swap contract to test Zoe handling contract failures.

@@ -3,7 +3,7 @@ import { test } from '@agoric/zoe/tools/prepare-test-env-ava.js';
 import '../../../../exported.js';
 
 import { calculateInterest } from '../../../../src/contracts/loan/updateDebt.js';
-import { makeRatio } from '../../../../src/contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 import { setup } from '../../setupBasicMints.js';
 
 test('test calculateInterest', async t => {

@@ -1,5 +1,5 @@
 import { isRemotable } from '@endo/marshal';
-import { assertIsRatio } from '@agoric/zoe/src/contractSupport/ratio.js';
+import { assertIsRatio } from '@agoric/contracts';
 import { mustMatch } from '@agoric/store';
 import { RelativeTimeRecordShape, TimestampRecordShape } from '@agoric/time';
 

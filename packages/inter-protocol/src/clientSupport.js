@@ -3,7 +3,7 @@
 import { Fail } from '@agoric/assert';
 import { AmountMath } from '@agoric/ertp';
 import { assertAllDefined } from '@agoric/internal';
-import { parseRatio } from '@agoric/zoe/src/contractSupport/ratio.js';
+import { parseRatio } from '@agoric/contracts';
 
 // XXX support other decimal places
 const COSMOS_UNIT = 1_000_000n;

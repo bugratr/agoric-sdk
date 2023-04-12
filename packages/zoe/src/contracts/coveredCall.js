@@ -1,6 +1,6 @@
 import { M, mustMatch } from '@agoric/store';
 // Eventually will be importable from '@agoric/zoe-contract-support'
-import { swapExact } from '../contractSupport/index.js';
+import { swapExact } from '@agoric/contracts';
 import { isAfterDeadlineExitRule } from '../typeGuards.js';
 
 const { Fail, quote: q } = assert;

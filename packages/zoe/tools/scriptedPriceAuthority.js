@@ -2,10 +2,7 @@ import { AmountMath, makeIssuerKit, AssetKind } from '@agoric/ertp';
 import { E } from '@endo/eventual-send';
 import { Far } from '@endo/marshal';
 import { observeNotifier } from '@agoric/notifier';
-import {
-  natSafeMath,
-  makeOnewayPriceAuthorityKit,
-} from '../src/contractSupport/index.js';
+import { natSafeMath, makeOnewayPriceAuthorityKit } from '@agoric/contracts';
 
 export function makeScriptedPriceAuthority(options) {
   const {

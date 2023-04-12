@@ -1,0 +1,49 @@
+{
+  "name": "@agoric/contracts",
+  "version": "0.0.1",
+  "description": "Utilities and sample contracts to support contract development",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "scripts": {
+    "build": "exit 0",
+    "prepack": "tsc --build jsconfig.build.json",
+    "postpack": "git clean -f '*.d.ts*'",
+    "test": "ava",
+    "test:nyc": "exit 0",
+    "test:xs": "exit 0",
+    "lint-fix": "yarn lint:eslint --fix",
+    "lint": "run-s --continue-on-error lint:*",
+    "lint:eslint": "eslint .",
+    "lint:types": "tsc -p jsconfig.json"
+  },
+  "dependencies": {
+    "@agoric/assert": "^0.5.1",
+    "@agoric/ertp": "^0.15.3",
+    "@agoric/internal": "^0.2.1",
+    "@agoric/notifier": "^0.5.1",
+    "@agoric/store": "^0.8.3",
+    "@agoric/vat-data": "^0.4.3",
+    "@agoric/zoe": "^0.25.3",
+    "@endo/eventual-send": "^0.16.8",
+    "@endo/marshal": "^0.8.1",
+    "@endo/nat": "^4.1.0",
+    "@endo/promise-kit": "^0.2.52",
+    "anylogger": "^0.21.0",
+    "jessie.js": "^0.3.2"
+  },
+  "devDependencies": {
+    "@endo/init": "^0.5.52",
+    "ava": "^5.2.0"
+  },
+  "author": "Agoric",
+  "license": "Apache-2.0",
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

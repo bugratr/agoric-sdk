@@ -10,7 +10,7 @@ import {
   ceilMultiplyBy,
   getTimestamp,
   atomicRearrange,
-} from '../../contractSupport/index.js';
+} from '@agoric/contracts';
 
 import { scheduleLiquidation } from './scheduleLiquidation.js';
 import { calculateInterest, makeDebtCalculator } from './updateDebt.js';

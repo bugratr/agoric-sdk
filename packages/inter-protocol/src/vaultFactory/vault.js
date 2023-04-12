@@ -5,7 +5,7 @@ import {
   atomicTransfer,
   floorMultiplyBy,
   makeRatioFromAmounts,
-} from '@agoric/zoe/src/contractSupport/index.js';
+} from '@agoric/contracts';
 import { SeatShape } from '@agoric/zoe/src/typeGuards.js';
 import {
   addSubtract,
@@ -113,7 +113,7 @@ const validTransitions = {
  *   interestSnapshot: Ratio,
  *   phase: VaultPhase,
  *   debtSnapshot: Amount<'nat'>,
- *   outerUpdater: import('@agoric/zoe/src/contractSupport/recorder.js').Recorder<VaultNotification> | null,
+ *   outerUpdater: import('@agoric/contracts').Recorder<VaultNotification> | null,
  * }} MutableState
  */
 
@@ -176,7 +176,7 @@ export const VaultI = M.interface('Vault', {
 
 /**
  * @param {import('@agoric/ertp').Baggage} baggage
- * @param {import('@agoric/zoe/src/contractSupport/recorder.js').MakeRecorderKit} makeRecorderKit
+ * @param {import('@agoric/contracts').MakeRecorderKit} makeRecorderKit
  * @param {ZCF} zcf
  */
 export const prepareVault = (baggage, makeRecorderKit, zcf) => {
@@ -626,7 +626,7 @@ export const prepareVault = (baggage, makeRecorderKit, zcf) => {
 
           const giveMintedTaken = AmountMath.subtract(fp.give.Minted, surplus);
 
-          /** @type {import('@agoric/zoe/src/contractSupport/atomicTransfer.js').TransferPart[]} */
+          /** @type {TransferPart[]} */
           const transfers = harden([
             [clientSeat, vaultSeat, { Collateral: fp.give.Collateral }],
             [vaultSeat, clientSeat, { Collateral: fp.want.Collateral }],

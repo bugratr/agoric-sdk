@@ -1,7 +1,4 @@
-import {
-  makeRatio,
-  ratioToNumber,
-} from '@agoric/zoe/src/contractSupport/index.js';
+import { makeRatio, ratioToNumber } from '@agoric/contracts';
 import { M, mustMatch } from '@agoric/store';
 import { RatioShape } from '@agoric/ertp';
 

@@ -5,7 +5,7 @@ import {
   getInputPrice,
   getOutputPrice,
   calcLiqValueToMint,
-} from '../../../src/contractSupport/index.js';
+} from '@agoric/contracts';
 
 const testGetPrice = (
   t,

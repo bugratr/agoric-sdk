@@ -9,10 +9,10 @@ import { makeIssuerKit, AmountMath, isSetValue } from '@agoric/ertp';
 import { claim } from '@agoric/ertp/src/legacy-payment-helpers.js';
 import { E } from '@endo/eventual-send';
 
+import { defaultAcceptanceMsg } from '@agoric/contracts';
 import { makeFakeVatAdmin } from '../../../tools/fakeVatAdmin.js';
 
 import { makeZoeKit } from '../../../src/zoeService/zoe.js';
-import { defaultAcceptanceMsg } from '../../../src/contractSupport/index.js';
 
 const filename = new URL(import.meta.url).pathname;
 const dirname = path.dirname(filename);

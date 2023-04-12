@@ -3,7 +3,7 @@ import { E } from '@endo/eventual-send';
 import { makePromiseKit } from '@endo/promise-kit';
 import { AssetKind } from '@agoric/ertp';
 import { fromUniqueEntries } from '@agoric/internal';
-import { satisfiesWant } from '../contractFacet/offerSafety.js';
+import { satisfiesWant } from '@agoric/zoe/src/contractFacet/offerSafety.js';
 import {
   atomicRearrange,
   atomicTransfer,

@@ -26,6 +26,10 @@ export function* enumeratePrefixedKeys(kvStore, prefix, exclusiveEnd) {
   }
 }
 
+/**
+ * @param {KVStore} kvStore
+ * @param {string} prefix
+ */
 // NOTE: awkward naming: the thing that returns a stream of keys is named
 // "enumerate..." while the thing that returns a stream of values is named
 // "get..."
@@ -43,12 +47,20 @@ function* enumerateNumericPrefixedKeys(kvStore, prefix) {
   }
 }
 
+/**
+ * @param {KVStore} kvStore
+ * @param {string} prefix
+ */
 export function* getPrefixedValues(kvStore, prefix) {
   for (const key of enumerateNumericPrefixedKeys(kvStore, prefix)) {
     yield kvStore.get(key) || Fail`enumerate ensures get`;
   }
 }
 
+/**
+ * @param {KVStore} kvStore
+ * @param {string} prefix
+ */
 export function deletePrefixedKeys(kvStore, prefix) {
   // this is kind of like a deleteRange() would be, but can be implemented
   // efficiently without backend DB support because it only looks at numeric

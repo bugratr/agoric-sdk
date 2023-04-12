@@ -7,13 +7,10 @@ import path from 'path';
 import { E } from '@endo/eventual-send';
 import bundleSource from '@endo/bundle-source';
 
+import { depositToSeat, withdrawFromSeat } from '@agoric/contracts';
 import { setup } from '../setupBasicMints.js';
 import { makeZoeKit } from '../../../src/zoeService/zoe.js';
 import { makeFakeVatAdmin } from '../../../tools/fakeVatAdmin.js';
-import {
-  depositToSeat,
-  withdrawFromSeat,
-} from '../../../src/contractSupport/index.js';
 import { assertPayoutAmount } from '../../zoeTestHelpers.js';
 import { makeOffer } from '../makeOffer.js';
 

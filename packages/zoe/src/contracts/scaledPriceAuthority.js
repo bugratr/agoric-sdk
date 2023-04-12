@@ -1,14 +1,14 @@
-import { Far } from '@endo/marshal';
 import { AssetKind, makeIssuerKit } from '@agoric/ertp';
+import { Far } from '@endo/marshal';
 
 import {
   ceilDivideBy,
-  floorDivideBy,
   ceilMultiplyBy,
+  floorDivideBy,
   floorMultiplyBy,
-} from '../contractSupport/index.js';
-import { makePriceAuthorityTransform } from '../contractSupport/priceAuthorityTransform.js';
-import { makeInitialTransform } from '../contractSupport/priceAuthorityInitial.js';
+} from '@agoric/contracts';
+import { makePriceAuthorityTransform } from './priceAuthorityTransform.js';
+import { makeInitialTransform } from './priceAuthorityInitial.js';
 
 /**
  * @typedef {object} ScaledPriceAuthorityOpts

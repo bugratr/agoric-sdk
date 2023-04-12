@@ -5,7 +5,7 @@ import { AmountMath } from '@agoric/ertp';
 import { TimeMath } from '@agoric/time';
 
 import { scheduleLiquidation } from './scheduleLiquidation.js';
-import { ceilMultiplyBy } from '../../contractSupport/index.js';
+import { ceilMultiplyBy } from '@agoric/contracts';
 
 // Update the debt by adding the new interest on every period, as
 // indicated by the periodNotifier

@@ -15,7 +15,7 @@ import {
   makeSeatKit,
   performAddCollateral,
 } from './helpers.js';
-import { makeRatio } from '../../../../src/contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 
 test.todo('makeAddCollateralInvitation - test bad proposal');
 

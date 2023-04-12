@@ -7,7 +7,7 @@ import {
 } from '@agoric/governance';
 import { M } from '@agoric/store';
 import { TimeMath } from '@agoric/time';
-import { subtractRatios } from '@agoric/zoe/src/contractSupport/ratio.js';
+import { subtractRatios } from '@agoric/contracts';
 import { amountPattern, ratioPattern } from '../contractSupport.js';
 
 export const CHARGING_PERIOD_KEY = 'ChargingPeriod';

@@ -9,7 +9,7 @@ import {
   makeScalarMapStore,
   provideLazy,
 } from '@agoric/store';
-import { assertProposalShape } from '@agoric/zoe/src/contractSupport/index.js';
+import { assertProposalShape } from '@agoric/contracts';
 import { AttKW as KW } from './constants.js';
 import { makeAttestationTool } from './attestationTool.js';
 

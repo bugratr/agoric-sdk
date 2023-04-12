@@ -6,7 +6,7 @@ import {
   makeOnewayPriceAuthorityKit,
   floorMultiplyBy,
   floorDivideBy,
-} from '../src/contractSupport/index.js';
+} from '@agoric/contracts';
 
 /**
  *

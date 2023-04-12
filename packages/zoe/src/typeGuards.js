@@ -383,3 +383,8 @@ export const PriceQuoteShape = harden({
   quoteAmount: AmountShape,
   quotePayment: M.eref(PaymentShape),
 });
+
+export const TransferPartShape = M.splitArray(
+  harden([M.opt(SeatShape), M.opt(SeatShape), M.opt(AmountKeywordRecordShape)]),
+  harden([M.opt(AmountKeywordRecordShape)]),
+);

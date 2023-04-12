@@ -1,4 +1,4 @@
-import { assertProposalShape } from '../../contractSupport/index.js';
+import { assertProposalShape } from '@agoric/contracts';
 import { makeBorrowInvitation } from './borrow.js';
 
 // The lender puts up the amount to be loaned to the borrower, but has

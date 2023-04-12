@@ -8,10 +8,7 @@ import { eventLoopIteration } from '@agoric/notifier/tools/testSupports.js';
 import { buildManualTimer } from '@agoric/swingset-vat/tools/manual-timer.js';
 import { makeScalarMapStore } from '@agoric/vat-data/src/index.js';
 import { makeBoard } from '@agoric/vats/src/lib-board.js';
-import {
-  makeRatio,
-  makeRatioFromAmounts,
-} from '@agoric/zoe/src/contractSupport/index.js';
+import { makeRatio, makeRatioFromAmounts } from '@agoric/contracts';
 import { assertPayoutAmount } from '@agoric/zoe/test/zoeTestHelpers.js';
 import { makeManualPriceAuthority } from '@agoric/zoe/tools/manualPriceAuthority.js';
 import { makePriceAuthorityRegistry } from '@agoric/zoe/tools/priceAuthorityRegistry.js';

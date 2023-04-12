@@ -12,10 +12,7 @@ import { AmountMath } from '@agoric/ertp';
  *
  * @type {ContractStartFn}
  */
-import {
-  assertProposalShape,
-  atomicTransfer,
-} from '../../src/contractSupport/index.js';
+import { assertProposalShape, atomicTransfer } from '@agoric/contracts';
 
 /** @param {ZCF<any>} zcf */
 const start = async zcf => {

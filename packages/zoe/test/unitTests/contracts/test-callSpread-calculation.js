@@ -1,12 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { test } from '@agoric/zoe/tools/prepare-test-env-ava.js';
 
+import { ceilMultiplyBy, floorMultiplyBy } from '@agoric/contracts';
 import { setup } from '../setupBasicMints.js';
 import { calculateShares } from '../../../src/contracts/callSpread/calculateShares.js';
-import {
-  ceilMultiplyBy,
-  floorMultiplyBy,
-} from '../../../src/contractSupport/index.js';
 import {
   make0Percent,
   make100Percent,

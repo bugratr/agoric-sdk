@@ -1,6 +1,5 @@
 import './src/contractFacet/types.js';
 import './src/zoeService/types.js';
-import './src/contractSupport/types.js';
 import './src/contracts/exported.js';
 import './src/types.js';
 import './tools/types-ambient.js';

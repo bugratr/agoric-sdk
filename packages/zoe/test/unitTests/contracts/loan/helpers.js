@@ -11,7 +11,7 @@ import bundleSource from '@endo/bundle-source';
 import { makeIssuerKit, AmountMath } from '@agoric/ertp';
 
 import { setupZCFTest } from '../../zcf/setupZcfTest.js';
-import { makeRatio } from '../../../../src/contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 import { assertAmountsEqual } from '../../../zoeTestHelpers.js';
 
 const filename = new URL(import.meta.url).pathname;

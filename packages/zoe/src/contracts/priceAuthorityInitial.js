@@ -1,11 +1,11 @@
 // @ts-check
-import { E } from '@endo/far';
+import { E } from '@endo/eventual-send';
 import { Far } from '@endo/marshal';
 
 import { makeNotifier } from '@agoric/notifier';
 import { AmountMath } from '@agoric/ertp';
+import { multiplyBy } from '@agoric/contracts';
 
-import { multiplyBy } from './ratio.js';
 import { mintQuote } from './priceAuthorityTransform.js';
 
 /** @template T @typedef {import('@endo/eventual-send').EOnly<T>} EOnly */

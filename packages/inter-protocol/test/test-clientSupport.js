@@ -1,7 +1,7 @@
 import { test } from '@agoric/zoe/tools/prepare-test-env-ava.js';
 
 import { makeIssuerKit } from '@agoric/ertp';
-import { makeRatio } from '@agoric/zoe/src/contractSupport/ratio.js';
+import { makeRatio } from '@agoric/contracts';
 import { makeParseAmount } from 'agoric/src/lib/wallet.js';
 import { withAmountUtils } from './supports.js';
 import { Offers } from '../src/clientSupport.js';

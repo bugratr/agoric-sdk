@@ -38,7 +38,11 @@ import {
   provideDurableMapStore,
   provideDurableSetStore,
 } from '@agoric/vat-data';
-import { TransferPartShape } from '@agoric/zoe/src/contractSupport/atomicTransfer.js';
+import {
+  TransferPartShape,
+  PriceQuoteShape,
+  SeatShape,
+} from '@agoric/zoe/src/typeGuards.js';
 import {
   atomicRearrange,
   ceilMultiplyBy,
@@ -52,8 +56,7 @@ import {
   multiplyRatios,
   offerTo,
   provideEmptySeat,
-} from '@agoric/zoe/src/contractSupport/index.js';
-import { PriceQuoteShape, SeatShape } from '@agoric/zoe/src/typeGuards.js';
+} from '@agoric/contracts';
 import { E } from '@endo/eventual-send';
 import { AuctionPFShape } from '../auction/auctioneer.js';
 import { checkDebtLimit, makeNatAmountShape } from '../contractSupport.js';
@@ -141,8 +144,8 @@ const quoteAsRatio = quoteAmount =>
  * @param {import('@agoric/ertp').Baggage} baggage
  * @param {import('./vaultFactory.js').VaultFactoryZCF} zcf
  * @param {ERef<Marshaller>} marshaller
- * @param {import('@agoric/zoe/src/contractSupport/recorder.js').MakeRecorderKit} makeRecorderKit
- * @param {import('@agoric/zoe/src/contractSupport/recorder.js').MakeERecorderKit} makeERecorderKit
+ * @param {import('@agoric/contracts').MakeRecorderKit} makeRecorderKit
+ * @param {import('@agoric/contracts').MakeERecorderKit} makeERecorderKit
  * @param {Readonly<{
  *   debtMint: ZCFMint<'nat'>,
  *   collateralBrand: Brand<'nat'>,
@@ -185,7 +188,7 @@ export const prepareVaultManagerKit = (
 
   const assetKit = makeRecorderKit(
     storageNode,
-    /** @type {import('@agoric/zoe/src/contractSupport/recorder.js').TypedMatcher<AssetState>} */ (
+    /** @type {import('@agoric/contracts').TypedMatcher<AssetState>} */ (
       M.any()
     ),
   );
@@ -199,7 +202,7 @@ export const prepareVaultManagerKit = (
 
   const metricsTopicKit = makeERecorderKit(
     E(storageNode).makeChildNode('metrics'),
-    /** @type {import('@agoric/zoe/src/contractSupport/recorder.js').TypedMatcher<MetricsNotification>} */ (
+    /** @type {import('@agoric/contracts').TypedMatcher<MetricsNotification>} */ (
       M.any()
     ),
   );
@@ -622,7 +625,7 @@ export const prepareVaultManagerKit = (
               totalCollateral,
             );
 
-            /** @type {import('@agoric/zoe/src/contractSupport/atomicTransfer.js').TransferPart[]} */
+            /** @type {TransferPart[]} */
             const transfers = [];
             let collatRemaining = distributableCollateral;
 
@@ -686,7 +689,7 @@ export const prepareVaultManagerKit = (
               distributable,
               totalCollateral,
             );
-            /** @type {import('@agoric/zoe/src/contractSupport/atomicTransfer.js').TransferPart[]} */
+            /** @type {TransferPart[]} */
             const transfers = [];
 
             // iterate from best to worst returning remaining funds to vaults
@@ -748,7 +751,7 @@ export const prepareVaultManagerKit = (
             const debtPortion = makeRatioFromAmounts(totalPenalty, totalDebt);
             let collatRemaining = distributableCollateral;
             let debtRemaining = totalDebt;
-            /** @type {import('@agoric/zoe/src/contractSupport/atomicTransfer.js').TransferPart[]} */
+            /** @type {TransferPart[]} */
             const transfers = [];
             let liquidated = 0;
             /** @type {MapStore<string, Vault>} */

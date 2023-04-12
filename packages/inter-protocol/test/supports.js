@@ -9,7 +9,7 @@ import { makeBoard } from '@agoric/vats/src/lib-board.js';
 import { Stable } from '@agoric/vats/src/tokens.js';
 import { makeMockChainStorageRoot } from '@agoric/internal/src/storage-test-utils.js';
 import { makeZoeKit } from '@agoric/zoe';
-import { makeRatio } from '@agoric/zoe/src/contractSupport/ratio.js';
+import { makeRatio } from '@agoric/contracts';
 import { eventLoopIteration } from '@agoric/zoe/tools/eventLoopIteration.js';
 import { makeFakeVatAdmin } from '@agoric/zoe/tools/fakeVatAdmin.js';
 import buildManualTimer from '@agoric/zoe/tools/manualTimer.js';

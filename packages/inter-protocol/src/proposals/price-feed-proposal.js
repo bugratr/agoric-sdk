@@ -7,7 +7,7 @@ import {
 } from '@agoric/internal/src/lib-chainStorage.js';
 import { deeplyFulfilledObject, makeTracer } from '@agoric/internal';
 
-import { unitAmount } from '@agoric/zoe/src/contractSupport/priceQuote.js';
+import { unitAmount } from '@agoric/contracts';
 import { CONTRACT_ELECTORATE, ParamTypes } from '@agoric/governance';
 import { reserveThenDeposit, reserveThenGetNames } from './utils.js';
 

@@ -6,7 +6,7 @@ import {
   saveAllIssuers,
   assertProposalShape,
   atomicTransfer,
-} from '../contractSupport/index.js';
+} from '@agoric/contracts';
 
 /**
  * This contract is inspired by the description of an OTC Desk smart

@@ -3,7 +3,7 @@ import {
   assertIssuerKeywords,
   swap,
   assertProposalShape,
-} from '../contractSupport/index.js';
+} from '@agoric/contracts';
 
 /**
  * Trade one item for another.

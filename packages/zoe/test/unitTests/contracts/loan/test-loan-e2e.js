@@ -15,7 +15,7 @@ import { checkDetails, checkPayout } from './helpers.js';
 import { setup } from '../../setupBasicMints.js';
 import { makeFakePriceAuthority } from '../../../../tools/fakePriceAuthority.js';
 import buildManualTimer from '../../../../tools/manualTimer.js';
-import { makeRatio } from '../../../../src/contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 
 const filename = new URL(import.meta.url).pathname;
 const dirname = path.dirname(filename);

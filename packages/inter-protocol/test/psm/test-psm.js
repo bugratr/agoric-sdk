@@ -14,7 +14,7 @@ import {
   floorMultiplyBy,
   makeRatio,
   natSafeMath as NatMath,
-} from '@agoric/zoe/src/contractSupport/index.js';
+} from '@agoric/contracts';
 import centralSupplyBundle from '@agoric/vats/bundles/bundle-centralSupply.js';
 import { E } from '@endo/eventual-send';
 import { NonNullish } from '@agoric/assert';

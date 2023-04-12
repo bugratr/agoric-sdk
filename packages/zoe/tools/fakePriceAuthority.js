@@ -8,7 +8,7 @@ import { E } from '@endo/eventual-send';
 import { Far } from '@endo/marshal';
 import { TimeMath } from '@agoric/time';
 
-import { natSafeMath } from '../src/contractSupport/index.js';
+import { natSafeMath } from '@agoric/contracts';
 
 import './types-ambient.js';
 

@@ -25,7 +25,7 @@ import { eventLoopIteration } from '../../../../tools/eventLoopIteration.js';
 import { makeBorrowInvitation } from '../../../../src/contracts/loan/borrow.js';
 import { makeAddCollateralInvitation } from '../../../../src/contracts/loan/addCollateral.js';
 import { makeCloseLoanInvitation } from '../../../../src/contracts/loan/close.js';
-import { makeRatio } from '../../../../src/contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 import { assertAmountsEqual } from '../../../zoeTestHelpers.js';
 
 const BASIS_POINTS = 10000n;

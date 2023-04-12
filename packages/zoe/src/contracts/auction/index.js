@@ -7,7 +7,7 @@ import {
   defaultAcceptanceMsg,
   assertIssuerKeywords,
   assertProposalShape,
-} from '../../contractSupport/index.js';
+} from '@agoric/contracts';
 import * as secondPriceLogic from './secondPriceLogic.js';
 import * as firstPriceLogic from './firstPriceLogic.js';
 import { assertBidSeat } from './assertBidSeat.js';

@@ -8,10 +8,7 @@ import {
   makeKindHandle,
   makeScalarBigMapStore,
 } from '@agoric/vat-data';
-import {
-  calculateMedian,
-  natSafeMath,
-} from '@agoric/zoe/src/contractSupport/index.js';
+import { calculateMedian, natSafeMath } from '@agoric/contracts';
 import { E } from '@endo/eventual-send';
 import { Far } from '@endo/marshal';
 import { UnguardedHelperI } from '../typeGuards.js';

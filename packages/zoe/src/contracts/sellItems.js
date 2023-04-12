@@ -12,7 +12,7 @@ import {
   assertProposalShape,
   assertNatAssetKind,
   atomicRearrange,
-} from '../contractSupport/index.js';
+} from '@agoric/contracts';
 
 const { Fail } = assert;
 

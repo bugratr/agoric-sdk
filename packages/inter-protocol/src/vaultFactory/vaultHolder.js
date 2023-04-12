@@ -10,7 +10,7 @@ const { Fail } = assert;
 
 /**
  * @typedef {{
- * topicKit: import('@agoric/zoe/src/contractSupport/recorder.js').RecorderKit<VaultNotification>,
+ * topicKit: import('@agoric/contracts').RecorderKit<VaultNotification>,
  * vault: Vault | null,
  * }} State
  */
@@ -34,7 +34,7 @@ const PUBLIC_TOPICS = {
 /**
  *
  * @param {import('@agoric/ertp').Baggage} baggage
- * @param {import('@agoric/zoe/src/contractSupport/recorder.js').MakeRecorderKit} makeRecorderKit
+ * @param {import('@agoric/contracts').MakeRecorderKit} makeRecorderKit
  */
 export const prepareVaultHolder = (baggage, makeRecorderKit) => {
   const makeVaultHolderKit = prepareExoClassKit(

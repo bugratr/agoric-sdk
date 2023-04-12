@@ -19,7 +19,7 @@ import {
   multiplyBy,
   subtractRatios,
   parseRatio,
-} from '../../../src/contractSupport/ratio.js';
+} from '@agoric/contracts';
 
 /**
  *

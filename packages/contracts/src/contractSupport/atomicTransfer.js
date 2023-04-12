@@ -1,22 +1,7 @@
 import { mustMatch, M } from '@agoric/store';
-import { assertRightsConserved } from '../contractFacet/rightsConservation.js';
-import { AmountKeywordRecordShape, SeatShape } from '../typeGuards.js';
+import { assertRightsConserved } from '@agoric/zoe/src/contractFacet/rightsConservation.js';
 
 const { Fail, quote: q } = assert;
-
-export const TransferPartShape = M.splitArray(
-  harden([M.opt(SeatShape), M.opt(SeatShape), M.opt(AmountKeywordRecordShape)]),
-  harden([M.opt(AmountKeywordRecordShape)]),
-);
-
-/**
- * @typedef {[
- *   fromSeat?: ZCFSeat,
- *   toSeat?: ZCFSeat,
- *   fromAmounts?: AmountKeywordRecord,
- *   toAmounts?: AmountKeywordRecord
- * ]} TransferPart
- */
 
 /**
  * Asks Zoe (via zcf) to rearrange the allocations among the seats

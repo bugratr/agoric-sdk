@@ -16,7 +16,7 @@ import '../../tools/types-ambient.js';
 import {
   calculateMedian,
   makeOnewayPriceAuthorityKit,
-} from '../contractSupport/index.js';
+} from '@agoric/contracts';
 import {
   addRatios,
   assertParsableNumber,
@@ -28,7 +28,7 @@ import {
   parseRatio,
   ratioGTE,
   ratiosSame,
-} from '../contractSupport/ratio.js';
+} from '@agoric/contracts';
 
 import '@agoric/ertp/src/types-ambient.js';
 

@@ -1,6 +1,6 @@
 import { makeStoredPublishKit } from '@agoric/notifier';
 import { makeScalarMapStore, makeExo, M } from '@agoric/store';
-import { natSafeMath } from '@agoric/zoe/src/contractSupport/index.js';
+import { natSafeMath } from '@agoric/contracts';
 import { E } from '@endo/eventual-send';
 
 import { makeHandle } from '@agoric/zoe/src/makeHandle.js';

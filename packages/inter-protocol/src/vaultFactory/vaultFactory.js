@@ -23,7 +23,7 @@ import { makeParamManagerFromTerms } from '@agoric/governance/src/contractGovern
 import { assertAllDefined } from '@agoric/internal';
 import { makeStoredSubscription, makeSubscriptionKit } from '@agoric/notifier';
 import { E } from '@endo/eventual-send';
-import { prepareRecorderKitMakers } from '@agoric/zoe/src/contractSupport/recorder.js';
+import { prepareRecorderKitMakers } from '@agoric/contracts';
 import { SHORTFALL_INVITATION_KEY, vaultDirectorParamTypes } from './params.js';
 import { prepareVaultDirector } from './vaultDirector.js';
 

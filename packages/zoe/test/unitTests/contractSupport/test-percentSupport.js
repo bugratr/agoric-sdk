@@ -3,7 +3,7 @@ import { test } from '@agoric/zoe/tools/prepare-test-env-ava.js';
 
 import { makeIssuerKit, AmountMath } from '@agoric/ertp';
 
-import { floorMultiplyBy } from '../../../src/contractSupport/index.js';
+import { floorMultiplyBy } from '@agoric/contracts';
 import {
   make100Percent,
   make0Percent,

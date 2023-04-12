@@ -1,9 +1,6 @@
 import { Nat } from '@endo/nat';
 
-import {
-  assertIssuerKeywords,
-  makeRatio,
-} from '../../contractSupport/index.js';
+import { assertIssuerKeywords, makeRatio } from '@agoric/contracts';
 import { makeLendInvitation } from './lend.js';
 
 /**

@@ -2,7 +2,7 @@ import {
   makeRatioFromAmounts,
   multiplyRatios,
   ratioGTE,
-} from '@agoric/zoe/src/contractSupport/index.js';
+} from '@agoric/contracts';
 
 /**
  * Constants for Auction State.

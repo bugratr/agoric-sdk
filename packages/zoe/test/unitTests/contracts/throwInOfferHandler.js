@@ -1,7 +1,7 @@
 import { makeIssuerKit, AmountMath } from '@agoric/ertp';
 import { Far } from '@endo/marshal';
 
-import { depositToSeat } from '../../../src/contractSupport/index.js';
+import { depositToSeat } from '@agoric/contracts';
 
 /**
  * This is a a broken contact to test that

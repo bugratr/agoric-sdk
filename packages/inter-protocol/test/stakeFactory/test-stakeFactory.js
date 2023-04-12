@@ -12,7 +12,7 @@ import mintHolderBundle from '@agoric/vats/bundles/bundle-mintHolder.js';
 import { makeAgoricNamesAccess, makePromiseSpace } from '@agoric/vats';
 import { makeBoard } from '@agoric/vats/src/lib-board.js';
 import { Stable } from '@agoric/vats/src/tokens.js';
-import { makeRatio } from '@agoric/zoe/src/contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 import buildManualTimer from '@agoric/zoe/tools/manualTimer.js';
 import { E, Far } from '@endo/far';
 import { deeplyFulfilled } from '@endo/marshal';

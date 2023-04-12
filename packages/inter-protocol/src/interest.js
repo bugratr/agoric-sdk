@@ -1,11 +1,11 @@
-import { AmountMath } from '@agoric/ertp';
-import { natSafeMath } from '@agoric/zoe/src/contractSupport/index.js';
+import { Fail } from '@agoric/assert';
 import {
   makeRatio,
   multiplyRatios,
+  natSafeMath,
   quantize,
-} from '@agoric/zoe/src/contractSupport/ratio.js';
-import { Fail } from '@agoric/assert';
+} from '@agoric/contracts';
+import { AmountMath } from '@agoric/ertp';
 import { TimeMath } from '@agoric/time';
 
 /**

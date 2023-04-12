@@ -2,22 +2,20 @@
 import { AmountMath, AssetKind, makeIssuerKit } from '@agoric/ertp';
 
 import { assert } from '@agoric/assert';
+import {
+  atomicRearrange,
+  floorDivideBy,
+  makeRatio,
+  multiplyBy,
+  multiplyRatios,
+  prepareRecorderKit,
+  unitAmount,
+} from '@agoric/contracts';
 import { makePublishKit, observeNotifier } from '@agoric/notifier';
 import {
   makeFakeMarshaller,
   makeFakeStorage,
 } from '@agoric/notifier/tools/testSupports.js';
-import {
-  atomicRearrange,
-  prepareRecorderKit,
-  unitAmount,
-} from '@agoric/zoe/src/contractSupport/index.js';
-import {
-  floorDivideBy,
-  makeRatio,
-  multiplyBy,
-  multiplyRatios,
-} from '@agoric/zoe/src/contractSupport/ratio.js';
 import { makeFakePriceAuthority } from '@agoric/zoe/tools/fakePriceAuthority.js';
 import buildManualTimer from '@agoric/zoe/tools/manualTimer.js';
 import { E } from '@endo/eventual-send';
@@ -102,7 +100,7 @@ export async function start(zcf, privateArgs, baggage) {
   const mintAndTransfer = (mintReceiver, toMint, fee, nonMintTransfers) => {
     const kept = AmountMath.subtract(toMint, fee);
     runMint.mintGains(harden({ Minted: toMint }), mintSeat);
-    /** @type {import('@agoric/zoe/src/contractSupport/atomicTransfer.js').TransferPart[]} */
+    /** @type {TransferPart[]} */
     const transfers = [
       ...nonMintTransfers,
       [mintSeat, vaultFactorySeat, { Minted: fee }],

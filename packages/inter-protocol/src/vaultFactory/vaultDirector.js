@@ -26,7 +26,7 @@ import {
   provideChildBaggage,
   provideEmptySeat,
   unitAmount,
-} from '@agoric/zoe/src/contractSupport/index.js';
+} from '@agoric/contracts';
 import { E } from '@endo/eventual-send';
 import { Far } from '@endo/marshal';
 import { makeMakeCollectFeesInvitation } from '../collectFees.js';
@@ -83,8 +83,8 @@ const shortfallInvitationKey = 'shortfallInvitation';
  * @param {ERef<import('../auction/auctioneer.js').AuctioneerPublicFacet>} auctioneer
  * @param {ERef<StorageNode>} storageNode
  * @param {ERef<Marshaller>} marshaller
- * @param {import('@agoric/zoe/src/contractSupport/recorder.js').MakeRecorderKit} makeRecorderKit
- * @param {import('@agoric/zoe/src/contractSupport/recorder.js').MakeERecorderKit} makeERecorderKit
+ * @param {import('@agoric/contracts').MakeRecorderKit} makeRecorderKit
+ * @param {import('@agoric/contracts').MakeERecorderKit} makeERecorderKit
  */
 export const prepareVaultDirector = (
   baggage,
@@ -117,7 +117,7 @@ export const prepareVaultDirector = (
 
   const metricsKit = makeERecorderKit(
     metricsNode,
-    /** @type {import('@agoric/zoe/src/contractSupport/recorder.js').TypedMatcher<MetricsNotification>} */ (
+    /** @type {import('@agoric/contracts').TypedMatcher<MetricsNotification>} */ (
       M.any()
     ),
   );
@@ -331,7 +331,7 @@ export const prepareVaultDirector = (
           ) => {
             const kept = AmountMath.subtract(toMint, fee);
             debtMint.mintGains(harden({ Minted: toMint }), mintSeat);
-            /** @type {import('@agoric/zoe/src/contractSupport/atomicTransfer.js').TransferPart[]} */
+            /** @type {TransferPart[]} */
             const transfers = [
               ...nonMintTransfers,
               [mintSeat, rewardPoolSeat, { Minted: fee }],

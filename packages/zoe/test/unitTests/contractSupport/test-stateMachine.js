@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { test } from '@agoric/zoe/tools/prepare-test-env-ava.js';
 
-import { makeStateMachine } from '../../../src/contractSupport/index.js';
+import { makeStateMachine } from '@agoric/contracts';
 
 test('stateMachine', t => {
   t.plan(4);

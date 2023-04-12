@@ -8,7 +8,7 @@ import {
   floorDivideBy,
   floorMultiplyBy,
   atomicRearrange,
-} from '@agoric/zoe/src/contractSupport/index.js';
+} from '@agoric/contracts';
 import { Far } from '@endo/marshal';
 import {
   handleParamGovernance,

@@ -2,7 +2,7 @@ import '@agoric/zoe/exported.js';
 
 import { AmountMath, AssetKind, makeIssuerKit } from '@agoric/ertp';
 import { makeNotifierFromSubscriber } from '@agoric/notifier';
-import { makeRatio } from '@agoric/zoe/src/contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 import { makeManualPriceAuthority } from '@agoric/zoe/tools/manualPriceAuthority.js';
 
 import { makeScriptedPriceAuthority } from '@agoric/zoe/tools/scriptedPriceAuthority.js';

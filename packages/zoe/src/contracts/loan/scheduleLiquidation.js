@@ -2,11 +2,7 @@ import { E } from '@endo/eventual-send';
 import { AmountMath } from '@agoric/ertp';
 
 import { liquidate } from './liquidate.js';
-import {
-  getAmountIn,
-  ceilMultiplyBy,
-  atomicTransfer,
-} from '../../contractSupport/index.js';
+import { getAmountIn, ceilMultiplyBy, atomicTransfer } from '@agoric/contracts';
 
 /** @type {ScheduleLiquidation} */
 export const scheduleLiquidation = (zcf, configWithBorrower) => {

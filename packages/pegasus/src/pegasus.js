@@ -3,10 +3,7 @@
 import { assert, details as X, Fail } from '@agoric/assert';
 import { makeLegacyWeakMap, makeLegacyMap } from '@agoric/store';
 import { E, Far } from '@endo/far';
-import {
-  assertProposalShape,
-  atomicTransfer,
-} from '@agoric/zoe/src/contractSupport/index.js';
+import { assertProposalShape, atomicTransfer } from '@agoric/contracts';
 import { makeSubscriptionKit } from '@agoric/notifier';
 
 import '@agoric/vats/exported.js';

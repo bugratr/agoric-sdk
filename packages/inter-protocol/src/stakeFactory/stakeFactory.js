@@ -1,7 +1,7 @@
 // @jessie-check
 import { AmountMath } from '@agoric/ertp';
 import { handleParamGovernance, ParamTypes } from '@agoric/governance';
-import { atomicRearrange } from '@agoric/zoe/src/contractSupport/atomicTransfer.js';
+import { atomicRearrange } from '@agoric/contracts';
 import { E, Far } from '@endo/far';
 import { makeMakeCollectFeesInvitation } from '../collectFees.js';
 import { makeAttestationFacets } from './attestation.js';
@@ -132,7 +132,7 @@ export const start = async (
   const mintAndTransfer = (mintReceiver, toMint, fee, nonMintTransfers) => {
     const kept = AmountMath.subtract(toMint, fee);
     debtMint.mintGains(harden({ [KW.Debt]: toMint }), mintSeat);
-    /** @type {import('@agoric/zoe/src/contractSupport/atomicTransfer.js').TransferPart[]} */
+    /** @type {TransferPart[]} */
     const transfers = [
       ...nonMintTransfers,
       [mintSeat, rewardPoolSeat, { [KW.Debt]: fee }],

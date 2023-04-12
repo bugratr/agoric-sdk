@@ -1,6 +1,6 @@
 import { mustMatch, M } from '@agoric/store';
 import { prepareExo, prepareExoClass } from '@agoric/vat-data';
-import { swapExact } from '../contractSupport/index.js';
+import { swapExact } from '@agoric/contracts';
 import { isAfterDeadlineExitRule, OfferHandlerI } from '../typeGuards.js';
 
 const { Fail } = assert;

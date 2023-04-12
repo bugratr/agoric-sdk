@@ -14,7 +14,7 @@ import {
   makeRatioFromAmounts,
   multiplyRatios,
   ratioGTE,
-} from '@agoric/zoe/src/contractSupport/index.js';
+} from '@agoric/contracts';
 import { E } from '@endo/captp';
 import {
   observeNotifier,

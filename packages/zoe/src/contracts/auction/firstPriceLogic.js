@@ -1,5 +1,5 @@
 import { AmountMath } from '@agoric/ertp';
-import { atomicRearrange } from '../../contractSupport/index.js';
+import { atomicRearrange } from '@agoric/contracts';
 
 /**
  * @param {ZCF} zcf

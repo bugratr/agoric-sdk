@@ -8,7 +8,7 @@ import {
   assertIssuerKeywords,
   assertProposalShape,
   assertNatAssetKind,
-} from '../../../src/contractSupport/index.js';
+} from '@agoric/contracts';
 
 const { details: X, quote: q } = assert;
 

@@ -7,10 +7,7 @@ import { allValues, makeTracer, objectMap } from '@agoric/internal';
 import { makeNotifierFromAsyncIterable } from '@agoric/notifier';
 import { M, matches } from '@agoric/store';
 import { unsafeMakeBundleCache } from '@agoric/swingset-vat/tools/bundleTool.js';
-import {
-  ceilMultiplyBy,
-  makeRatio,
-} from '@agoric/zoe/src/contractSupport/index.js';
+import { ceilMultiplyBy, makeRatio } from '@agoric/contracts';
 import {
   assertAmountsEqual,
   assertPayoutAmount,

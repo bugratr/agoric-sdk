@@ -1,4 +1,4 @@
-import { atomicTransfer } from '@agoric/zoe/src/contractSupport/index.js';
+import { atomicTransfer } from '@agoric/contracts';
 
 /**
  * Provide shared support for providing access to fees from a service contract.

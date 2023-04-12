@@ -3,10 +3,7 @@ import { test } from '@agoric/zoe/tools/prepare-test-env-ava.js';
 import { AmountMath } from '@agoric/ertp';
 import { makeScalarBigMapStore } from '@agoric/vat-data';
 import { setupZCFTest } from '@agoric/zoe/test/unitTests/zcf/setupZcfTest.js';
-import {
-  makeRatio,
-  makeRatioFromAmounts,
-} from '@agoric/zoe/src/contractSupport/index.js';
+import { makeRatio, makeRatioFromAmounts } from '@agoric/contracts';
 import { makeOffer } from '@agoric/zoe/test/unitTests/makeOffer.js';
 import { buildManualTimer } from '@agoric/swingset-vat/tools/manual-timer.js';
 import { makeManualPriceAuthority } from '@agoric/zoe/tools/manualPriceAuthority.js';

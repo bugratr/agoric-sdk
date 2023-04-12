@@ -1,7 +1,7 @@
 // @jessie-check
 
 import { makeTracer } from '@agoric/internal';
-import { makeRatioFromAmounts } from '@agoric/zoe/src/contractSupport/index.js';
+import { makeRatioFromAmounts } from '@agoric/contracts';
 import { AmountMath } from '@agoric/ertp';
 import { Far } from '@endo/marshal';
 import { M } from '@agoric/vat-data';

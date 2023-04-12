@@ -8,7 +8,7 @@ import {
   depositToSeat,
   assertNatAssetKind,
   atomicRearrange,
-} from '../../contractSupport/index.js';
+} from '@agoric/contracts';
 import { makePayoffHandler } from './payoffHandler.js';
 import { Position } from './position.js';
 

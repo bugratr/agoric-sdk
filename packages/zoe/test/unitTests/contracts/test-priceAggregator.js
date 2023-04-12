@@ -28,7 +28,7 @@ import {
   multiplyBy,
   multiplyRatios,
   parseRatio,
-} from '../../../src/contractSupport/ratio.js';
+} from '@agoric/contracts';
 
 /**
  * @callback MakeFakePriceOracle

@@ -6,7 +6,7 @@ import {
   getAmountOut,
   ceilMultiplyBy,
   atomicTransfer,
-} from '../../contractSupport/index.js';
+} from '@agoric/contracts';
 import { Position } from './position.js';
 import { calculateShares } from './calculateShares.js';
 

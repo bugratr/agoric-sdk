@@ -18,7 +18,7 @@ import {
 import { M, mustMatch } from '@agoric/store';
 import { appendToStoredArray } from '@agoric/store/src/stores/store-utils.js';
 import { makeScalarBigMapStore, prepareExoClassKit } from '@agoric/vat-data';
-import { makeStorageNodePathProvider } from '@agoric/zoe/src/contractSupport/durability.js';
+import { makeStorageNodePathProvider } from '@agoric/contracts';
 import { E } from '@endo/far';
 import { makeInvitationsHelper } from './invitations.js';
 import { makeOfferExecutor } from './offers.js';

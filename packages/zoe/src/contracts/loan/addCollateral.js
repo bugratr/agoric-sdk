@@ -1,7 +1,4 @@
-import {
-  assertProposalShape,
-  atomicTransfer,
-} from '../../contractSupport/index.js';
+import { assertProposalShape, atomicTransfer } from '@agoric/contracts';
 
 import { scheduleLiquidation } from './scheduleLiquidation.js';
 

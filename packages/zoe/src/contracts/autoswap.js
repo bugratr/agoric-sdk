@@ -12,7 +12,7 @@ import {
   assertNatAssetKind,
   calcSecondaryRequired,
   atomicRearrange,
-} from '../contractSupport/index.js';
+} from '@agoric/contracts';
 
 /**
  * Autoswap is a rewrite of Uniswap. Please see the documentation for

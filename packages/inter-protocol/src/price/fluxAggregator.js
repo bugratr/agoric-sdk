@@ -15,7 +15,7 @@ import { makeScalarBigMapStore } from '@agoric/vat-data';
 import {
   makeOnewayPriceAuthorityKit,
   makeStorageNodePathProvider,
-} from '@agoric/zoe/src/contractSupport/index.js';
+} from '@agoric/contracts';
 import { E } from '@endo/eventual-send';
 import { Far } from '@endo/marshal';
 import { makeOracleAdminKit } from './priceOracleKit.js';

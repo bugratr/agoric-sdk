@@ -1,7 +1,7 @@
 import { test } from '@agoric/zoe/tools/prepare-test-env-ava.js';
 import { makeIssuerKit, AmountMath } from '@agoric/ertp';
 import { makeStoredPublisherKit } from '@agoric/notifier';
-import { makeRatio } from '@agoric/zoe/src/contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 import { setupZCFTest } from '@agoric/zoe/test/unitTests/zcf/setupZcfTest.js';
 import { E } from '@endo/eventual-send';
 import { Far } from '@endo/marshal';

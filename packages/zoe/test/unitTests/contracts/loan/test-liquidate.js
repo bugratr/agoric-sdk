@@ -12,7 +12,7 @@ import {
   checkNoNewOffers,
   checkPayouts,
 } from './helpers.js';
-import { atomicRearrange } from '../../../../src/contractSupport/atomicTransfer.js';
+import { atomicRearrange } from '@agoric/contracts';
 
 test('test doLiquidation with mocked autoswap', async t => {
   const { zcf, collateralKit, loanKit } = await setupLoanUnitTest();

@@ -4,7 +4,7 @@ import { E } from '@endo/eventual-send';
 import { AmountMath } from '@agoric/ertp';
 import { makeTracer } from '@agoric/internal';
 import { TimeMath } from '@agoric/time';
-import { atomicRearrange } from '@agoric/zoe/src/contractSupport/index.js';
+import { atomicRearrange } from '@agoric/contracts';
 import { makeScalarMapStore } from '@agoric/store';
 
 import { AUCTION_START_DELAY, PRICE_LOCK_PERIOD } from '../auction/params.js';
@@ -127,7 +127,7 @@ const getLiquidatableVaults = (
   const { zcfSeat: liqSeat } = zcf.makeEmptySeatKit();
   let totalDebt = AmountMath.makeEmpty(debtBrand);
   let totalCollateral = AmountMath.makeEmpty(collateralBrand);
-  /** @type {import('@agoric/zoe/src/contractSupport/atomicTransfer.js').TransferPart[]} */
+  /** @type {TransferPart[]} */
   const transfers = [];
 
   for (const vault of vaultsToLiquidate.values()) {

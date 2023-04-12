@@ -1,7 +1,7 @@
 import { Far } from '@endo/marshal';
 import { makeLegacyMap } from '@agoric/store';
 // Eventually will be importable from '@agoric/zoe-contract-support'
-import { satisfies, atomicRearrange } from '../contractSupport/index.js';
+import { satisfies, atomicRearrange } from '@agoric/contracts';
 
 /**
  * This Barter Exchange accepts offers to trade arbitrary goods for other

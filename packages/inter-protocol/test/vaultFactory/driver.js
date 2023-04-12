@@ -4,10 +4,7 @@ import { AmountMath, AssetKind, makeIssuerKit } from '@agoric/ertp';
 import { allValues, makeTracer, objectMap } from '@agoric/internal';
 import { makeNotifierFromSubscriber } from '@agoric/notifier';
 import { unsafeMakeBundleCache } from '@agoric/swingset-vat/tools/bundleTool.js';
-import {
-  ceilMultiplyBy,
-  makeRatioFromAmounts,
-} from '@agoric/zoe/src/contractSupport/index.js';
+import { ceilMultiplyBy, makeRatioFromAmounts } from '@agoric/contracts';
 import { makeManualPriceAuthority } from '@agoric/zoe/tools/manualPriceAuthority.js';
 import buildManualTimer from '@agoric/zoe/tools/manualTimer.js';
 import { E } from '@endo/eventual-send';

@@ -2,7 +2,7 @@ import { E } from '@endo/eventual-send';
 import { Remotable } from '@endo/marshal';
 import { AmountMath } from '@agoric/ertp';
 
-import { natSafeMath } from '../src/contractSupport/index.js';
+import { natSafeMath } from '@agoric/contracts';
 import { assertOfferResult, assertPayoutAmount } from './zoeTestHelpers.js';
 
 const { add, subtract, multiply, floorDivide, ceilDivide } = natSafeMath;

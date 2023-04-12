@@ -3,12 +3,8 @@ import { test } from '@agoric/zoe/tools/prepare-test-env-ava.js';
 import { Far } from '@endo/marshal';
 
 import { makeScalarMapStore } from '@agoric/store';
+import { defaultAcceptanceMsg, satisfies } from '@agoric/contracts';
 import { setup } from '../setupBasicMints.js';
-
-import {
-  defaultAcceptanceMsg,
-  satisfies,
-} from '../../../src/contractSupport/index.js';
 
 test('ZoeHelpers messages', t => {
   t.is(

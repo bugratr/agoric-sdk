@@ -1,8 +1,5 @@
 import { AmountMath } from '@agoric/ertp';
-import {
-  floorMultiplyBy,
-  makeRatio,
-} from '@agoric/zoe/src/contractSupport/ratio.js';
+import { floorMultiplyBy, makeRatio } from '@agoric/contracts';
 import { Far } from '@endo/marshal';
 import { reverseInterest } from '../../src/interest-math.js';
 

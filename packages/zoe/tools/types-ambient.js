@@ -156,3 +156,12 @@
  * @property {Amount<'nat'>} amountOut
  * The quoted result of trading `amountIn`
  */
+
+/**
+ * @typedef {[
+ *   fromSeat?: ZCFSeat,
+ *   toSeat?: ZCFSeat,
+ *   fromAmounts?: AmountKeywordRecord,
+ *   toAmounts?: AmountKeywordRecord
+ * ]} TransferPart
+ */

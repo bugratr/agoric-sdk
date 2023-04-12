@@ -1,6 +1,6 @@
 // some tools to make treating ratios as percents easier
 
-import { makeRatio } from '../../contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 
 const BASIS_POINTS = 10000n;
 

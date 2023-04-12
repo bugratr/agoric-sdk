@@ -44,6 +44,7 @@
   "homepage": "https://github.com/Agoric/agoric-sdk#readme",
   "dependencies": {
     "@agoric/assert": "^0.5.1",
+    "@agoric/contracts": "^0.0.1",
     "@agoric/ertp": "^0.15.3",
     "@agoric/internal": "^0.2.1",
     "@endo/nat": "^4.1.0",

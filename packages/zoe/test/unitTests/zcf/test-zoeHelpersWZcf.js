@@ -11,7 +11,7 @@ import {
   swapExact,
   assertNatAssetKind,
   saveAllIssuers,
-} from '../../../src/contractSupport/index.js';
+} from '@agoric/contracts';
 import { assertPayoutAmount } from '../../zoeTestHelpers.js';
 import { setupZCFTest } from './setupZcfTest.js';
 import { makeOffer } from '../makeOffer.js';

@@ -1,12 +1,11 @@
 // @jessie-check
+import { floorMultiplyBy, makeRatio } from '@agoric/contracts';
 import { AmountMath } from '@agoric/ertp';
-import { makePublishKit, observeNotifier } from '@agoric/notifier';
-import { mustMatch, getCopyBagEntries, M } from '@agoric/store';
-import { defineKindMulti } from '@agoric/vat-data';
-import { floorMultiplyBy } from '@agoric/zoe/src/contractSupport/index.js';
-import { makeRatio } from '@agoric/zoe/src/contractSupport/ratio.js';
-import { E } from '@endo/far';
 import { makeTracer } from '@agoric/internal';
+import { makePublishKit, observeNotifier } from '@agoric/notifier';
+import { getCopyBagEntries, M, mustMatch } from '@agoric/store';
+import { defineKindMulti } from '@agoric/vat-data';
+import { E } from '@endo/far';
 import { checkDebtLimit } from '../contractSupport.js';
 import { chargeInterest } from '../interest.js';
 import { ManagerKW as KW } from './constants.js';
@@ -246,7 +245,7 @@ const manager = {
    * @param {ZCFSeat} seat
    * @param {Amount<'nat'>} toMint
    * @param {Amount<'nat'>} fee
-   * @param {import('@agoric/zoe/src/contractSupport/atomicTransfer.js').TransferPart[]} transfers
+   * @param {TransferPart[]} transfers
    * @returns {void}
    */
   mintAndReallocate: ({ state }, seat, toMint, fee, transfers) => {

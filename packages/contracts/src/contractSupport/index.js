@@ -32,28 +32,10 @@ export {
   offerTo,
 } from './zoeHelpers.js';
 
-export {
-  makeRatio,
-  makeRatioFromAmounts,
-  floorMultiplyBy,
-  floorDivideBy,
-  ceilMultiplyBy,
-  ceilDivideBy,
-  assertIsRatio,
-  invertRatio,
-  oneMinus,
-  addRatios,
-  multiplyRatios,
-  ratiosSame,
-  quantize,
-  ratioGTE,
-  subtractRatios,
-  ratioToNumber,
-} from './ratio.js';
-
 export * from './durability.js';
 export * from './priceAuthority.js';
 export * from './priceQuote.js';
-export * from './statistics.js';
+export * from './ratio.js';
 export * from './recorder.js';
+export * from './statistics.js';
 export * from './topics.js';

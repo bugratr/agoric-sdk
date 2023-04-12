@@ -7,7 +7,7 @@ import '@agoric/vats/exported.js';
 import '@agoric/vats/src/core/types.js';
 import { Stable, Stake } from '@agoric/vats/src/tokens.js';
 import { makeStorageNodeChild } from '@agoric/internal/src/lib-chainStorage.js';
-import { makeRatio } from '@agoric/zoe/src/contractSupport/index.js';
+import { makeRatio } from '@agoric/contracts';
 import { E } from '@endo/far';
 import { LienBridgeId, makeStakeReporter } from '../my-lien.js';
 import { makeReserveTerms } from '../reserve/params.js';

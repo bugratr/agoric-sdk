@@ -8,7 +8,7 @@ import {
   ceilMultiplyBy,
   makeRatio,
   makeRatioFromAmounts,
-} from '@agoric/zoe/src/contractSupport/index.js';
+} from '@agoric/contracts';
 import { eventLoopIteration } from '@agoric/zoe/tools/eventLoopIteration.js';
 import { buildManualTimer } from '@agoric/swingset-vat/tools/manual-timer.js';
 import { E } from '@endo/eventual-send';

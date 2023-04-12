@@ -1,10 +1,6 @@
 import { test } from '@agoric/zoe/tools/prepare-test-env-ava.js';
 
-import {
-  ratiosSame,
-  makeRatioFromAmounts,
-  quantize,
-} from '@agoric/zoe/src/contractSupport/index.js';
+import { ratiosSame, makeRatioFromAmounts, quantize } from '@agoric/contracts';
 import { setup } from '@agoric/zoe/test/unitTests/setupBasicMints.js';
 import {
   fromPriceOfferKey,

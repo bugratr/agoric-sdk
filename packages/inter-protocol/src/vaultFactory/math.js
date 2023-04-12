@@ -3,13 +3,13 @@
  * See also ../interest-math.js
  */
 
-import { AmountMath } from '@agoric/ertp';
-import { getAmountOut } from '@agoric/zoe/src/contractSupport/priceQuote.js';
 import {
   addRatios,
   ceilMultiplyBy,
   floorDivideBy,
-} from '@agoric/zoe/src/contractSupport/ratio.js';
+  getAmountOut,
+} from '@agoric/contracts';
+import { AmountMath } from '@agoric/ertp';
 import { addSubtract } from '../contractSupport.js';
 
 /**

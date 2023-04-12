@@ -18,7 +18,7 @@ import {
   provideEmptySeat,
   ceilMultiplyBy,
   ceilDivideBy,
-} from '@agoric/zoe/src/contractSupport/index.js';
+} from '@agoric/contracts';
 import { FullProposalShape } from '@agoric/zoe/src/typeGuards.js';
 import { E } from '@endo/eventual-send';
 import { Far } from '@endo/marshal';
@@ -84,7 +84,7 @@ const distributeProportionalShares = (
 
   const collShare = makeRatioFromAmounts(collateralReturn, totalCollDeposited);
   const currShare = makeRatioFromAmounts(currencyRaised, totalCollDeposited);
-  /** @type {import('@agoric/zoe/src/contractSupport/atomicTransfer.js').TransferPart[]} */
+  /** @type {TransferPart[]} */
   const transfers = [];
   let currencyLeft = currencyRaised;
   let collateralLeft = collateralReturn;
@@ -237,7 +237,7 @@ export const distributeProportionalSharesWithLimits = (
   // collateral to reach their share. Then see what's left, and allocate it
   // among the remaining depositors. Escape to distributeProportionalShares if
   // anything doesn't work.
-  /** @type {import('@agoric/zoe/src/contractSupport/atomicTransfer.js').TransferPart[]} */
+  /** @type {TransferPart[]} */
   const transfers = [];
   let currencyLeft = currencyRaised;
   let collateralLeft = collateralReturn;

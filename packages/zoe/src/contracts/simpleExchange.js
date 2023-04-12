@@ -6,7 +6,7 @@ import {
   satisfies,
   assertProposalShape,
   assertIssuerKeywords,
-} from '../contractSupport/zoeHelpers.js';
+} from '@agoric/contracts';
 
 /**
  * SimpleExchange is an exchange with a simple matching algorithm, which allows

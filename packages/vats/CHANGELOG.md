@@ -3,6 +3,126 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/Agoric/agoric-sdk/compare/@agoric/vats@0.13.0...@agoric/vats@0.14.0) (2023-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **auction:** Currency → Bid
+* --giveCurrency option becomes --give and likewise
+--wantCollateral -> --want. Use snake-case for options throughout to
+match cosmos-sdk style
+
+ - `bid` commands integrate `wallet send` step
+   - show bid result
+ - use only liveOffers for inter bid list by default
+   - to show all: --all
+ - fix: provide --allow-spend for tryExitOffer
+   unless/until we change the wallet contract
+ - don't show redundant result in error case
+ - trial: use offer safe want in by-price bids
+ - leave exit onDemand implicit
+ - refactor:
+   - factor out outputActionAndHint
+   - allow explicit io for execSwingsetTransaction
+     - combine options into one object
+   - factor out storedWalletState
+   - factor pollBlocks out of pollTx
+ - update tests
+
+feat: inter bid by-discount sends; --generate-only; list --all
+
+ - bid by-discount, like by-price, sends the tx
+   - factor out placeBid, SharedBidOpts, withSharedBidOptions
+ - bid list uses activeOffers unless --all is given
+ - support --generate-only
+ - use snake-case for option names; avoid [xx] optional syntax
+ - give PATH clue everywhere execFileSync is used
+ - test.todo()s
+ - code polish:
+   - expand file, function docs
+   - refactor: hoist bidInvitationShape
+* **wallet:** reject executeOffer on failure
+* **notifier:** tidy up the implementation
+* **AMM:**  remove the AMM and cleanup bootstrap etc. dependencies (#7074)
+* rename 'fit' to 'mustMatch'
+* remove storeName parameter
+
+### Features
+
+* change offerArgs keyword from want to maxBuy, wire through CLI ([#7451](https://github.com/Agoric/agoric-sdk/issues/7451)) ([7cd7bb7](https://github.com/Agoric/agoric-sdk/commit/7cd7bb774981620f76b30aca217d8e5428f8987d))
+* **boot:** terminate bootstrap vat if boot fails ([1f60c25](https://github.com/Agoric/agoric-sdk/commit/1f60c2572b9b191cee15fb7ff516a6c8b11c7512))
+* **vats:** add vat labels to contracts ([dbef5e5](https://github.com/Agoric/agoric-sdk/commit/dbef5e5d53f6b9da5c8fc96ca7b5e61558b39fa9))
+* clientSupport for bidding, reserve ([3a27543](https://github.com/Agoric/agoric-sdk/commit/3a27543e3fef3587d26fe3719bad758edebce275))
+* introduce auctioneer to econCommitteeCharter ([af1b253](https://github.com/Agoric/agoric-sdk/commit/af1b2538924e2112448b026901dfb7c37dce2f86))
+* publish agoricNames.brand.timer ([51235d7](https://github.com/Agoric/agoric-sdk/commit/51235d72f8c657dc3f3daed837eb089066fe2735))
+* UX for `inter bid` ([52d93c3](https://github.com/Agoric/agoric-sdk/commit/52d93c33edbad2bebd54a6eb967853e7292de2e7))
+* **AMM:**  remove the AMM and cleanup bootstrap etc. dependencies ([#7074](https://github.com/Agoric/agoric-sdk/issues/7074)) ([ed5ee58](https://github.com/Agoric/agoric-sdk/commit/ed5ee58a276fce3c55f19e4f6f662ed579896c2c)), closes [#7047](https://github.com/Agoric/agoric-sdk/issues/7047)
+* **auction:** add an auctioneer to manage vault liquidation ([#7000](https://github.com/Agoric/agoric-sdk/issues/7000)) ([398b70f](https://github.com/Agoric/agoric-sdk/commit/398b70f7e028f957afc1582f0ee31eb2574c94d0)), closes [#6992](https://github.com/Agoric/agoric-sdk/issues/6992) [#7047](https://github.com/Agoric/agoric-sdk/issues/7047) [#7074](https://github.com/Agoric/agoric-sdk/issues/7074)
+* **auction:** clearer bid offer result message ([048a7db](https://github.com/Agoric/agoric-sdk/commit/048a7db523b727c6959c0c4fb3782ed3508e32e8))
+* **board-utils:** BoardRemote like Remotables ([3aa44de](https://github.com/Agoric/agoric-sdk/commit/3aa44debbdc955892611ba870478fb088395cf10))
+* **bridge:** make durable ([9f3895f](https://github.com/Agoric/agoric-sdk/commit/9f3895f8d95e0da62ee2894ed17c3b7bed476b7f))
+* **inter-protocol:** separate inviteCommitteMembers from inviteToCharter ([4c5340d](https://github.com/Agoric/agoric-sdk/commit/4c5340d9a40ecd9c27d68aee48a4d97a868f5eb9))
+* **notifier:** tidy up the implementation ([89af682](https://github.com/Agoric/agoric-sdk/commit/89af6827e88966c836bf28f5900edf189aab9926))
+* **smart-wallet:** publish possibly exitable offers ([de0170a](https://github.com/Agoric/agoric-sdk/commit/de0170add5bd4c82cbef23431bffaa95f7007880))
+* **vats:** bootstrap config for vaults testing ([0059c7e](https://github.com/Agoric/agoric-sdk/commit/0059c7e88a0bbb1b85be69c68ad75ad87e1219cd))
+* **vats:** colocate chainStorage with bridgeManager ([132046a](https://github.com/Agoric/agoric-sdk/commit/132046a50ffac8b85ad2a7dca250a397d5887862))
+* **vats:** export makeAgoricNamesAccess at package level ([9ae7701](https://github.com/Agoric/agoric-sdk/commit/9ae7701bf9c110703c303eefae440f8209c50a63))
+* **vats:** harmonise core/boot.js and boot-psm.js ([4f6635e](https://github.com/Agoric/agoric-sdk/commit/4f6635e550b926d3ca43d9075f26fef3b810817d))
+* **vats:** make walletFactory a coreProposal ([ef1d6b9](https://github.com/Agoric/agoric-sdk/commit/ef1d6b91036e4450563294c62236fbe453a7f532))
+* **vats:** plausible initial ATOM price for vaults test config ([1f8c6ce](https://github.com/Agoric/agoric-sdk/commit/1f8c6cea456bf4b47275c7ed3e5a127f1c13d780))
+* **vats:** provide one `icacontroller-*` port per client ([5406eb7](https://github.com/Agoric/agoric-sdk/commit/5406eb70daa42ef80e1ecb287a37ee54fe7230f1))
+* **vats:** publish vbank asset list with agoricNames ([53ea8b8](https://github.com/Agoric/agoric-sdk/commit/53ea8b86526329e71f6e52ff9a8292365443319c))
+* **vats:** Scoped bridge managers ([11f6429](https://github.com/Agoric/agoric-sdk/commit/11f64298d8529cca249d2933894236dc534dfe3e))
+* **vats:** share Invitation issuer/brand in agoricNames ([819ed35](https://github.com/Agoric/agoric-sdk/commit/819ed350a4d2ca3b527c6a9b51dba847856aa2df))
+* **vats:** update devnet config to post-Pismo ([3eca8d6](https://github.com/Agoric/agoric-sdk/commit/3eca8d614902669038c133a4ca45465a08b81a0f))
+* **vats:** upgradeable board ([b990271](https://github.com/Agoric/agoric-sdk/commit/b990271f07ebb07bef3af18924e9fd7429e23f88))
+* **vats:** upgradeable mintHolder ([2648658](https://github.com/Agoric/agoric-sdk/commit/2648658224bfbbce253c26a35d54759aeaf67352))
+* **vaults:** set endorsedUi default from chain config ([fc0b2fc](https://github.com/Agoric/agoric-sdk/commit/fc0b2fca4bd26f5b35504109143a51da5d0a059f))
+* **wallet:** executeOffer throw errors ([224dbca](https://github.com/Agoric/agoric-sdk/commit/224dbca918343608d53f691a448171c8a48d283e))
+* **wallet:** record bridge errors to vstorage ([f8581e9](https://github.com/Agoric/agoric-sdk/commit/f8581e95311f7cb4105f6d81f0ac7b6a9121b68f))
+* **wallet:** reject executeOffer on failure ([308caab](https://github.com/Agoric/agoric-sdk/commit/308caab24c1680c2c7910eff8128f9089dedf26d))
+* board-utils ([4f80ad3](https://github.com/Agoric/agoric-sdk/commit/4f80ad3cac3e47a89834f7f98330a47141b6e235))
+* boot-oracles ([ce8f8de](https://github.com/Agoric/agoric-sdk/commit/ce8f8de65ad4c14b4e8d699cd721683cfa1cc495))
+* cache bundles in initializeSwingset ([6e57171](https://github.com/Agoric/agoric-sdk/commit/6e57171ef303334e4cb776ba3fa503f5219d409e))
+* getPath() on StorageNode and StoredSubscriber ([dae47a5](https://github.com/Agoric/agoric-sdk/commit/dae47a553288335960b5e4f2741a09b87ae896bc))
+* hold onto adminFacets in bootstrap ([#6094](https://github.com/Agoric/agoric-sdk/issues/6094)) ([a2ecdec](https://github.com/Agoric/agoric-sdk/commit/a2ecdecdfb35bc752af2d5d9cc611a1d00d489cf)), closes [#6034](https://github.com/Agoric/agoric-sdk/issues/6034)
+* testing supports in bootstrap ([197a6e3](https://github.com/Agoric/agoric-sdk/commit/197a6e3b8b1f6632f4e159aefbf66a395ebdc292))
+
+
+### Bug Fixes
+
+* **auction:** Currency → Bid ([650cf4c](https://github.com/Agoric/agoric-sdk/commit/650cf4c6527c92724dac7b4587bdbecd690a6abc))
+* code updates for new marshal ([292f971](https://github.com/Agoric/agoric-sdk/commit/292f971769db69e61782f96638c2f687c3f95ac2))
+* **auction:** durability ([de394d3](https://github.com/Agoric/agoric-sdk/commit/de394d37288005f77ad17c19ae121eeb7cd5abc2))
+* **smart-wallet:** create purses for new assets lazily ([e241ba0](https://github.com/Agoric/agoric-sdk/commit/e241ba03a7d9f441436b3d987f9327060d7dd8ce))
+* **smart-wallet:** reenable provisioning options ([55f3ab1](https://github.com/Agoric/agoric-sdk/commit/55f3ab1a0842ae2cc60a05b55e17120e964570b5))
+* **vat-provisioning:** bad updater call ([3835198](https://github.com/Agoric/agoric-sdk/commit/38351983836fdf9d3db70312ee39ae9e6a0da7b6))
+* **vat-provisioning:** bad updater call ([2f7d5f4](https://github.com/Agoric/agoric-sdk/commit/2f7d5f4620aefea0b5078ca6ca0c2fb09bb54089))
+* **vats:** always eventual-send to bridgeManager ([f3a10ce](https://github.com/Agoric/agoric-sdk/commit/f3a10cea0fcf1f26103b5b008b194a29d3208ce0))
+* **vats:** prune mints/faucet from prod-like vats config ([74d5f33](https://github.com/Agoric/agoric-sdk/commit/74d5f33afbf81c4f0383632269e606d31003b7f5))
+* **vats:** reattach `this` to `publisher.publish` ([575ed1b](https://github.com/Agoric/agoric-sdk/commit/575ed1bd6f78fefe41dca57425daec4c8d2d08ef))
+* **vats:** remove duplicate `-` from `icacontroller--2` port ([3d22773](https://github.com/Agoric/agoric-sdk/commit/3d2277357f7be89f281136be274a8ad9385f79af))
+* **vats:** repl tolerates toStringTag override ([d748087](https://github.com/Agoric/agoric-sdk/commit/d748087911511151da7aae6794d7191b4fb71283))
+* **vats:** tolerate null powerFlags ([140986f](https://github.com/Agoric/agoric-sdk/commit/140986fdadf25ef929145c2e68ad6e11cc33e3e8))
+* **zoe:** payments more recoverable ([#7112](https://github.com/Agoric/agoric-sdk/issues/7112)) ([ce7244d](https://github.com/Agoric/agoric-sdk/commit/ce7244d6cf23f57e6de73b5d119e9681456fded7))
+* align testnet -> agoric start tooling ([ead89fb](https://github.com/Agoric/agoric-sdk/commit/ead89fb49b4095f326f4bbab52ac79c9dd7d0e2f))
+* bootstrap handles BundleIDs, not full bundles ([de8b0f5](https://github.com/Agoric/agoric-sdk/commit/de8b0f5d35e0938fa00d795d11cfad3acadd9428)), closes [#6826](https://github.com/Agoric/agoric-sdk/issues/6826) [#4374](https://github.com/Agoric/agoric-sdk/issues/4374)
+* remove incomplete device-mock method getBundleIDByName ([18763b6](https://github.com/Agoric/agoric-sdk/commit/18763b676ef4f5edc893560a45558374512cb4c8))
+* replace unsafe then with E.when ([#6684](https://github.com/Agoric/agoric-sdk/issues/6684)) ([d7a749e](https://github.com/Agoric/agoric-sdk/commit/d7a749eec4ddec9ba39bbc65434f03ec113cae7c))
+* replace zoe.install with zoe.installBundleID ([8a91b1b](https://github.com/Agoric/agoric-sdk/commit/8a91b1b06bf1a62c08156e595cf46f5194f73337)), closes [#6826](https://github.com/Agoric/agoric-sdk/issues/6826)
+* swingset should define these types, not zoe/ERTP ([35a977b](https://github.com/Agoric/agoric-sdk/commit/35a977b2fa3c03bd5292718e318a26e897ff3d04))
+* update types/dependencies for new @agoric/time ([418545a](https://github.com/Agoric/agoric-sdk/commit/418545ae88085de6e7fde415baa7de0a3f3056a4))
+* **vats:** use async chainStorage methods ([0507206](https://github.com/Agoric/agoric-sdk/commit/05072067b28b146c5836a456d5824a63776980b0))
+
+
+### Miscellaneous Chores
+
+* remove storeName parameter ([452f9bc](https://github.com/Agoric/agoric-sdk/commit/452f9bc680d4f54bed5608eb0d7cf67d80d87ba0))
+* rename 'fit' to 'mustMatch' ([9fa3232](https://github.com/Agoric/agoric-sdk/commit/9fa32324f84bfb85de9e99e0c9ad277b8017b50e)), closes [#6844](https://github.com/Agoric/agoric-sdk/issues/6844)
+
+
+
 ## [0.13.0](https://github.com/Agoric/agoric-sdk/compare/@agoric/vats@0.12.1...@agoric/vats@0.13.0) (2022-10-18)
 
 

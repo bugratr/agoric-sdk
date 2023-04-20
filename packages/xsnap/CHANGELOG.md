@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/Agoric/agoric-sdk/compare/@agoric/xsnap@0.13.2...@agoric/xsnap@0.14.0) (2023-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **xsnap:** Update Moddable SDK and xsnap-native (#6920)
+
+### Features
+
+* create new xsnap-lockdown package ([2af831d](https://github.com/Agoric/agoric-sdk/commit/2af831d9683a4080168ee267e8d57227d2167f37)), closes [#6596](https://github.com/Agoric/agoric-sdk/issues/6596)
+* **xsnap:** Update Moddable SDK and xsnap-native ([#6920](https://github.com/Agoric/agoric-sdk/issues/6920)) ([ddb745b](https://github.com/Agoric/agoric-sdk/commit/ddb745bb1a940cd81dae34c642eb357faca0150b))
+
+
+### Bug Fixes
+
+* **xsnap:** add untracked build-env file ([223a74b](https://github.com/Agoric/agoric-sdk/commit/223a74bd0fb6139e6240c57d63297080293cfcd5))
+* **xsnap:** cleanly close using message ([ae54724](https://github.com/Agoric/agoric-sdk/commit/ae54724e7c1882d5dd235f2207dd0a1a7794d35a))
+
+
+
 ### [0.13.2](https://github.com/Agoric/agoric-sdk/compare/@agoric/xsnap@0.13.1...@agoric/xsnap@0.13.2) (2022-10-05)
 
 **Note:** Version bump only for package @agoric/xsnap

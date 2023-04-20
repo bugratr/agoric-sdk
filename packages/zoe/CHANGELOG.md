@@ -3,6 +3,111 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.0](https://github.com/Agoric/agoric-sdk/compare/@agoric/zoe@0.25.3...@agoric/zoe@0.26.0) (2023-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* move PublicTopic to Zoe contractSupport
+* rm obsolete makeStorageNodePathProvider
+* **AMM:**  remove the AMM and cleanup bootstrap etc. dependencies (#7074)
+* storage paths by getPublicTopics
+* rename 'fit' to 'mustMatch'
+* **chainlink:** only smart-wallet oracles
+* **chainlink:** 'data' string to 'unitPrice' bigint
+* publish PriceDescription instead of PriceQuote
+* **vat-data:** deprecate kinds in favor of Far Classes (#6106)
+* ensure KindHandle has a tag
+* **priceAggregator:** invitation makers
+
+### Features
+
+* **zoe:** default bundle label to (prefix of) bundleID ([9c50355](https://github.com/Agoric/agoric-sdk/commit/9c503558164f235084ac47c6b3ba1239acd6dc50))
+* **zoe:** error on unexpected properties from start() ([807d175](https://github.com/Agoric/agoric-sdk/commit/807d175632bda863653fd2aef7169136be8b1a85))
+* Support for labeling contract vats at runtime ([21834c4](https://github.com/Agoric/agoric-sdk/commit/21834c4bb45f67f400d13da3796b578a76aed672)), closes [#4738](https://github.com/Agoric/agoric-sdk/issues/4738)
+* **AMM:**  remove the AMM and cleanup bootstrap etc. dependencies ([#7074](https://github.com/Agoric/agoric-sdk/issues/7074)) ([ed5ee58](https://github.com/Agoric/agoric-sdk/commit/ed5ee58a276fce3c55f19e4f6f662ed579896c2c)), closes [#7047](https://github.com/Agoric/agoric-sdk/issues/7047)
+* **auction:** add an auctioneer to manage vault liquidation ([#7000](https://github.com/Agoric/agoric-sdk/issues/7000)) ([398b70f](https://github.com/Agoric/agoric-sdk/commit/398b70f7e028f957afc1582f0ee31eb2574c94d0)), closes [#6992](https://github.com/Agoric/agoric-sdk/issues/6992) [#7047](https://github.com/Agoric/agoric-sdk/issues/7047) [#7074](https://github.com/Agoric/agoric-sdk/issues/7074)
+* **contractSupport:** provideAll for upgrades ([a7f9e14](https://github.com/Agoric/agoric-sdk/commit/a7f9e14e9f86b937f61fae43ab872d2dd32cd1eb))
+* **contractSupport:** provideAll takes thunks ([f35034b](https://github.com/Agoric/agoric-sdk/commit/f35034b13b99dbfb8d472816644e09f9b4f2be3a))
+* **contractSupport:** providePublicTopic ([5bdb71e](https://github.com/Agoric/agoric-sdk/commit/5bdb71e1af9ecde163322612de3e648fd75d7a47))
+* **contractSupport:** provideStoredSubscriber ([b073799](https://github.com/Agoric/agoric-sdk/commit/b073799142798660bb734d2ce38379977c7dd4cd))
+* **contractSupport:** PublicTopics types and utils ([2c7865f](https://github.com/Agoric/agoric-sdk/commit/2c7865fa4e43c96c9a85be743a7f808a66b9311e))
+* **contractSupport:** Recorder ([ce5d6de](https://github.com/Agoric/agoric-sdk/commit/ce5d6dee081df999afca4bc0374b82060c388fc7))
+* **contractSupport:** StorageNodePathProvider ([cfa0375](https://github.com/Agoric/agoric-sdk/commit/cfa037564d78cd1d99c1677d8f1c5cd26cafaeb6))
+* **oracle:** support continuing invitation ([ed950f5](https://github.com/Agoric/agoric-sdk/commit/ed950f5498e7773c5bd433b76725c8f093e01d48))
+* **oracle!:** roundId in price results ([e1f7488](https://github.com/Agoric/agoric-sdk/commit/e1f7488e52388b013343d6a6d0dd03ce5b2c9932))
+* **priceAggregator:** invitation makers ([bdc4052](https://github.com/Agoric/agoric-sdk/commit/bdc40528d2192a1af5fae39f400ba00bf5990cfd))
+* **rpc:** publish latestRound ([9e2617b](https://github.com/Agoric/agoric-sdk/commit/9e2617b02c2be9465b6df328bbef8145a3ab8901))
+* **scaledPriceAuthority:** support initialPrice before 1st round ([0c37233](https://github.com/Agoric/agoric-sdk/commit/0c37233bf157fa59eca3a867217ca94b8c334f7d))
+* **types:** addChild checks rest args ([6adff6d](https://github.com/Agoric/agoric-sdk/commit/6adff6d20d750a7119049b855c1e1b1223c60cdc))
+* **types:** export expolicit tools types ([2a96f45](https://github.com/Agoric/agoric-sdk/commit/2a96f4521a693ca27409e6e7aa8015299b7c2f46))
+* **vaults:** durable Recorders for chain storage ([0e34930](https://github.com/Agoric/agoric-sdk/commit/0e3493025685a413cccd99f9e41a3c9c9a8c99cd))
+* **zygote:** better diagnostics ([5feafb5](https://github.com/Agoric/agoric-sdk/commit/5feafb504c38d0d50cb9e8f5aed7e3bd16480388))
+* assertParsableNumber ([3b1550b](https://github.com/Agoric/agoric-sdk/commit/3b1550b1bbcf819c60ebf99dbcfd40667acb4212))
+* boot-oracles ([ce8f8de](https://github.com/Agoric/agoric-sdk/commit/ce8f8de65ad4c14b4e8d699cd721683cfa1cc495))
+* check privateArgsShape ([be31fbc](https://github.com/Agoric/agoric-sdk/commit/be31fbc16d913878780af0ecf5fe526f88994f7b))
+* ensure KindHandle has a tag ([7744d7e](https://github.com/Agoric/agoric-sdk/commit/7744d7ede4a9cfc3317207438192d8375f71b9d7))
+* getPath() on StorageNode and StoredSubscriber ([dae47a5](https://github.com/Agoric/agoric-sdk/commit/dae47a553288335960b5e4f2741a09b87ae896bc))
+* priceAggregatorChainlink in inter-protocol ([d8707a5](https://github.com/Agoric/agoric-sdk/commit/d8707a59431223fcd394b0fbb94284e22237446c))
+* PriceQuoteShape ([b88e7e6](https://github.com/Agoric/agoric-sdk/commit/b88e7e652fa4d378dc807a6ee880668f004ebc73))
+* publish price quotes ([e3e3984](https://github.com/Agoric/agoric-sdk/commit/e3e3984b389a143bccd084773474e27d94745561))
+* publish PriceDescription instead of PriceQuote ([30d3966](https://github.com/Agoric/agoric-sdk/commit/30d3966755900869dd6332a974077073f201983c))
+* storage paths by getPublicTopics ([40a8624](https://github.com/Agoric/agoric-sdk/commit/40a8624240f241a686c28bd7d7c7ef1ef780f984))
+* TransferPartShape ([56928d6](https://github.com/Agoric/agoric-sdk/commit/56928d6d58183f5fc00e381a733468dd8575e6f0))
+* **store:** M.splitArray and M.splitRecord ([#6597](https://github.com/Agoric/agoric-sdk/issues/6597)) ([e7427e3](https://github.com/Agoric/agoric-sdk/commit/e7427e386bcbfbe99312b41342b1fa2e722c57c7))
+* **types:** infer this.state in far classes ([11b35d3](https://github.com/Agoric/agoric-sdk/commit/11b35d38448c9665a6db5a919b37744d2d929a53))
+* **types:** paramterize Instance ([8d1832a](https://github.com/Agoric/agoric-sdk/commit/8d1832a8001ccd98339d68856b0756cad25462d4))
+* **zoe:** fit customTermsShape ([5f14ac4](https://github.com/Agoric/agoric-sdk/commit/5f14ac4c54cb0f88b228115d57c3ba63a7b10753))
+* **zoe:** pass key to init in makeEphemeraProvider ([32ad4bc](https://github.com/Agoric/agoric-sdk/commit/32ad4bc545c45cd83c0639b00b41c4317afb4464))
+
+
+### Bug Fixes
+
+* some stateShapes ([50c9fe4](https://github.com/Agoric/agoric-sdk/commit/50c9fe49d0fe890a08c0c28a00780f4924f7928c))
+* **zoeSeat:** handling of non-durable offerResult ([8cb12fe](https://github.com/Agoric/agoric-sdk/commit/8cb12fe2fe9254f77e17e0e777255e1037cca040))
+* await was missing in test ([#7163](https://github.com/Agoric/agoric-sdk/issues/7163)) ([7a7bf5a](https://github.com/Agoric/agoric-sdk/commit/7a7bf5a4f6ec962f39c6c0c573f8bc2770be4526))
+* delete deprecated spread customDetails ([#7067](https://github.com/Agoric/agoric-sdk/issues/7067)) ([93f7eb1](https://github.com/Agoric/agoric-sdk/commit/93f7eb120fcfd797af5eef84b3f4c3d8a82fc88d))
+* fewer deprecated defineKind etc ([#7141](https://github.com/Agoric/agoric-sdk/issues/7141)) ([2636f1e](https://github.com/Agoric/agoric-sdk/commit/2636f1e0beeb8bc2b7dc9d3ed47cd53a47b45685))
+* tighten `bindAllMethods` caller types ([15f384f](https://github.com/Agoric/agoric-sdk/commit/15f384f04ed94f0ff51270717e74c1668809c895))
+* **contractSupport:** makeEphemeraProvider gc ([5eee9c7](https://github.com/Agoric/agoric-sdk/commit/5eee9c797eab4d827c6c8f6c3b75ed651879099c))
+* **scaledPriceAuthority:** invert initialPrice; support quoteGiven ([5dad466](https://github.com/Agoric/agoric-sdk/commit/5dad4660100d6c776f1757ea2e5d7d27890665a2))
+* **zcfZygote:** instanceRecHolder for restart ([2936e84](https://github.com/Agoric/agoric-sdk/commit/2936e8461741dad2de7611ca336398eaf7b1f614))
+* **zoe:** installBundle handles HashBundle format ([#6828](https://github.com/Agoric/agoric-sdk/issues/6828)) ([0f75764](https://github.com/Agoric/agoric-sdk/commit/0f7576432d93ec83b420ee22ed2346eaaee99f2a))
+* **zoe:** payments more recoverable ([#7112](https://github.com/Agoric/agoric-sdk/issues/7112)) ([ce7244d](https://github.com/Agoric/agoric-sdk/commit/ce7244d6cf23f57e6de73b5d119e9681456fded7))
+* missing zcfMint options ([753ea03](https://github.com/Agoric/agoric-sdk/commit/753ea03d713f791bebeea82422d659ffc46bca80))
+* more precise startInstance ([#7164](https://github.com/Agoric/agoric-sdk/issues/7164)) ([1de9294](https://github.com/Agoric/agoric-sdk/commit/1de9294d79cd6d0b6e5faefb6086724f1bd35e7b))
+* **scaledPriceAuthority:** initialPrice in/out in quote notifier ([0cfe3a1](https://github.com/Agoric/agoric-sdk/commit/0cfe3a103c29e183eae27e732e270da984c9dbf4))
+* **scaledPriceAuthority:** timing of makeQuoteNotifier vs quoteGiven ([bb50f26](https://github.com/Agoric/agoric-sdk/commit/bb50f264fc957ba59912243e394d947c678250a9))
+* better proposal mismatch errors ([#6477](https://github.com/Agoric/agoric-sdk/issues/6477)) ([42fdddf](https://github.com/Agoric/agoric-sdk/commit/42fdddfbc87a7e61b848cdf00a06f1886af935d7))
+* bootstrap handles BundleIDs, not full bundles ([de8b0f5](https://github.com/Agoric/agoric-sdk/commit/de8b0f5d35e0938fa00d795d11cfad3acadd9428)), closes [#6826](https://github.com/Agoric/agoric-sdk/issues/6826) [#4374](https://github.com/Agoric/agoric-sdk/issues/4374)
+* rename from FarClass to ExoClass, etc ([#6323](https://github.com/Agoric/agoric-sdk/issues/6323)) ([da96c7c](https://github.com/Agoric/agoric-sdk/commit/da96c7c3c902a5e266baeedf23df02481f2e9c9d))
+* rename vivify to prepare ([#6825](https://github.com/Agoric/agoric-sdk/issues/6825)) ([9261e42](https://github.com/Agoric/agoric-sdk/commit/9261e42e677a3fc31f52defc8fc7ae800f098838))
+* replace unsafe then with E.when ([#6684](https://github.com/Agoric/agoric-sdk/issues/6684)) ([d7a749e](https://github.com/Agoric/agoric-sdk/commit/d7a749eec4ddec9ba39bbc65434f03ec113cae7c))
+* replace zoe.install with zoe.installBundleID ([8a91b1b](https://github.com/Agoric/agoric-sdk/commit/8a91b1b06bf1a62c08156e595cf46f5194f73337)), closes [#6826](https://github.com/Agoric/agoric-sdk/issues/6826)
+* swingset should define these types, not zoe/ERTP ([35a977b](https://github.com/Agoric/agoric-sdk/commit/35a977b2fa3c03bd5292718e318a26e897ff3d04))
+* update all clients of @agoric/time to handle the new home ([5c4fb24](https://github.com/Agoric/agoric-sdk/commit/5c4fb241940c74be6b081718b9350bceba95b9cd))
+* update types/dependencies for new @agoric/time ([418545a](https://github.com/Agoric/agoric-sdk/commit/418545ae88085de6e7fde415baa7de0a3f3056a4))
+* **chainlink:** publish new quotes ([9914899](https://github.com/Agoric/agoric-sdk/commit/99148990824661bdf447fad6f420882a43688aa1))
+* **types:** ZoeService annotation ([24aebe6](https://github.com/Agoric/agoric-sdk/commit/24aebe69b6773a7c63cc0d1193e5e09eb4e52cc6))
+* **zoeAdmin:** default payouts value ([2e0bf13](https://github.com/Agoric/agoric-sdk/commit/2e0bf1322c2cffd618f6032911a8c7a4d5e4e8f4))
+* use atomicTransfers rather than stagings. ([#6577](https://github.com/Agoric/agoric-sdk/issues/6577)) ([65d3f14](https://github.com/Agoric/agoric-sdk/commit/65d3f14c8102993168d2568eed5e6acbcba0c48a))
+* **vat-data:** deprecate kinds in favor of Far Classes ([#6106](https://github.com/Agoric/agoric-sdk/issues/6106)) ([b63360b](https://github.com/Agoric/agoric-sdk/commit/b63360b416b06cb654d5fc51428a3252e1f0b34f))
+
+
+### Miscellaneous Chores
+
+* rename 'fit' to 'mustMatch' ([9fa3232](https://github.com/Agoric/agoric-sdk/commit/9fa32324f84bfb85de9e99e0c9ad277b8017b50e)), closes [#6844](https://github.com/Agoric/agoric-sdk/issues/6844)
+* rm obsolete makeStorageNodePathProvider ([dc0a4a5](https://github.com/Agoric/agoric-sdk/commit/dc0a4a545d89c8bf89bf44e7c888537ddf626522))
+* **chainlink:** 'data' string to 'unitPrice' bigint ([a8c836c](https://github.com/Agoric/agoric-sdk/commit/a8c836cb70a033d78199372669f6f95314de4d8f))
+* **chainlink:** only smart-wallet oracles ([8e61373](https://github.com/Agoric/agoric-sdk/commit/8e61373a0ca8c6afc0b2f27a3568011312624c14))
+
+
+### Code Refactoring
+
+* move PublicTopic to Zoe contractSupport ([c51ea3d](https://github.com/Agoric/agoric-sdk/commit/c51ea3de22f50e05fcc1aaabd2108e785d51eb2e))
+
+
+
 ### [0.25.3](https://github.com/Agoric/agoric-sdk/compare/@agoric/zoe@0.25.2...@agoric/zoe@0.25.3) (2022-10-18)
 
 **Note:** Version bump only for package @agoric/zoe

@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.0](https://github.com/Agoric/agoric-sdk/compare/@agoric/notifier@0.5.1...@agoric/notifier@0.6.0) (2023-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* move PublicTopic to Zoe contractSupport
+* remove deprecated pipeTopicToStorage
+* rm obsolete makeStorageNodePathProvider
+* **notifier:** tidy up the implementation
+
+### Features
+
+* **casting:** handle noData value encoding ([530bc41](https://github.com/Agoric/agoric-sdk/commit/530bc41854cc7f5e5749e97e87fabc6163a17864))
+* **contractSupport:** PublicTopics types and utils ([2c7865f](https://github.com/Agoric/agoric-sdk/commit/2c7865fa4e43c96c9a85be743a7f808a66b9311e))
+* **notifier:** create `src/subscribe.js` ([8029c97](https://github.com/Agoric/agoric-sdk/commit/8029c97d58c093ccb7e3f58c8936828996231e66))
+* **notifier:** tidy up the implementation ([89af682](https://github.com/Agoric/agoric-sdk/commit/89af6827e88966c836bf28f5900edf189aab9926))
+* getPath() on StorageNode and StoredSubscriber ([dae47a5](https://github.com/Agoric/agoric-sdk/commit/dae47a553288335960b5e4f2741a09b87ae896bc))
+* support TopicsRecord ([8618461](https://github.com/Agoric/agoric-sdk/commit/8618461781fe11f28e6b891a4d31ebfd9dda5e0d))
+* **topics:** makePublicTopic ([c8b464c](https://github.com/Agoric/agoric-sdk/commit/c8b464c26c53535097e4df573e126c81e00e5aa6))
+* makeStoredNotifier ([cb1dde8](https://github.com/Agoric/agoric-sdk/commit/cb1dde882cd7630940033d0ff933fc03303dac7d))
+* pipeTopicToStorage ([69ca308](https://github.com/Agoric/agoric-sdk/commit/69ca308fdbc63a5ec956e3a0cde72f6b80ad4be8))
+* StorageNodeShape ([e585fa0](https://github.com/Agoric/agoric-sdk/commit/e585fa0c73f29ea0d57b6a8ec43cd4fe78575663))
+* **notifier:** Introduce durable publish kits ([#6502](https://github.com/Agoric/agoric-sdk/issues/6502)) ([8f7b353](https://github.com/Agoric/agoric-sdk/commit/8f7b3530ca50dc1945f024690a63914fe8431502))
+
+
+### Bug Fixes
+
+* some stateShapes ([50c9fe4](https://github.com/Agoric/agoric-sdk/commit/50c9fe49d0fe890a08c0c28a00780f4924f7928c))
+* **notifier:** Add a makeDurablePublishKit "onAdvance" option ([4c62b52](https://github.com/Agoric/agoric-sdk/commit/4c62b52b94cbc9ccb3c7388f5e94589809e6d7fd)), closes [#7303](https://github.com/Agoric/agoric-sdk/issues/7303)
+* **notifier:** For durable `fail()`, persist the reason rather than a rejected promise ([#7011](https://github.com/Agoric/agoric-sdk/issues/7011)) ([0d63b64](https://github.com/Agoric/agoric-sdk/commit/0d63b6468b7dd5fdb64ed4b1b563befae7406874)), closes [#7009](https://github.com/Agoric/agoric-sdk/issues/7009)
+* **notifier:** rely on `@endo/far` ([c103b85](https://github.com/Agoric/agoric-sdk/commit/c103b85a65bdd5ef1666c6762250f63a799e5f38))
+* **notifier:** Remove the makeDurablePublishKit "onAdvance" option ([#7370](https://github.com/Agoric/agoric-sdk/issues/7370)) ([6861f5e](https://github.com/Agoric/agoric-sdk/commit/6861f5e6479dffba9ab8b366f48791f9649b3a59)), closes [#7341](https://github.com/Agoric/agoric-sdk/issues/7341) [#7350](https://github.com/Agoric/agoric-sdk/issues/7350)
+* **SwingSet:** Remove metering notifiers ([#7347](https://github.com/Agoric/agoric-sdk/issues/7347)) ([0c75d7c](https://github.com/Agoric/agoric-sdk/commit/0c75d7cf1a1c54ba67d3d199c0674d0f22fb52ba)), closes [#7324](https://github.com/Agoric/agoric-sdk/issues/7324)
+* makeStoredSubscriber w/durable Subscriber ([eba4492](https://github.com/Agoric/agoric-sdk/commit/eba4492fcffa946000be19b3f8264462eecfe977))
+* rename from FarClass to ExoClass, etc ([#6323](https://github.com/Agoric/agoric-sdk/issues/6323)) ([da96c7c](https://github.com/Agoric/agoric-sdk/commit/da96c7c3c902a5e266baeedf23df02481f2e9c9d))
+* rename vivify to prepare ([#6825](https://github.com/Agoric/agoric-sdk/issues/6825)) ([9261e42](https://github.com/Agoric/agoric-sdk/commit/9261e42e677a3fc31f52defc8fc7ae800f098838))
+* **vats:** use async chainStorage methods ([0507206](https://github.com/Agoric/agoric-sdk/commit/05072067b28b146c5836a456d5824a63776980b0))
+* repair version shear ([59de3ab](https://github.com/Agoric/agoric-sdk/commit/59de3ab131d61a6fe2915adc795f0442a94cb7b6))
+
+
+### Miscellaneous Chores
+
+* remove deprecated pipeTopicToStorage ([6a6108a](https://github.com/Agoric/agoric-sdk/commit/6a6108aeb00c676fe1db130f1baea9a98c1d8e8b))
+* rm obsolete makeStorageNodePathProvider ([dc0a4a5](https://github.com/Agoric/agoric-sdk/commit/dc0a4a545d89c8bf89bf44e7c888537ddf626522))
+
+
+### Code Refactoring
+
+* move PublicTopic to Zoe contractSupport ([c51ea3d](https://github.com/Agoric/agoric-sdk/commit/c51ea3de22f50e05fcc1aaabd2108e785d51eb2e))
+
+
+
 ### [0.5.1](https://github.com/Agoric/agoric-sdk/compare/@agoric/notifier@0.5.0...@agoric/notifier@0.5.1) (2022-10-05)
 
 **Note:** Version bump only for package @agoric/notifier

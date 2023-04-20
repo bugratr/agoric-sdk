@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.33.0](https://github.com/Agoric/agoric-sdk/compare/@agoric/cosmos@0.32.2...@agoric/cosmos@0.33.0) (2023-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **vstorage:** separate `set`, `legacySet` and `setWithoutNotify`
+
+### Features
+
+* **casting:** handle noData value encoding ([530bc41](https://github.com/Agoric/agoric-sdk/commit/530bc41854cc7f5e5749e97e87fabc6163a17864))
+* **cosmic-proto:** add state-sync artifacts proto ([4cc25f5](https://github.com/Agoric/agoric-sdk/commit/4cc25f56ba9e967039c2dff2cbb566eafb37aaea))
+* **cosmic-swingset:** add after-commit action ([970a53f](https://github.com/Agoric/agoric-sdk/commit/970a53f827ded21b27525f6b0042bbc124c62d48))
+* **cosmic-swingset:** Add context info to actionQueue items ([ed47435](https://github.com/Agoric/agoric-sdk/commit/ed4743519e81dbb05b6136de1f94bae0ae0f87c8))
+* **cosmic-swingset:** basic snapshot wiring ([b1072d8](https://github.com/Agoric/agoric-sdk/commit/b1072d8b1ddabbb5f2835eb503c945fed3b6b080))
+* **cosmic-swingset:** export swingStore kvData to vstorage ([be68431](https://github.com/Agoric/agoric-sdk/commit/be684315dc68ecf0cb603a8eb38ddd5418e996a6))
+* **cosmic-swingset:** leave inbound in actionQueue ([a32299d](https://github.com/Agoric/agoric-sdk/commit/a32299df308eb869def870cca93f0b89e37e9110))
+* **cosmic-swingset:** remove unnecessary explicit activityhash ([5dcc44d](https://github.com/Agoric/agoric-sdk/commit/5dcc44d31be0c8a95a5749d768791fa35b72dbd3))
+* **cosmos:** Export KVData as artifact ([283fded](https://github.com/Agoric/agoric-sdk/commit/283fded7ceedace3c916cf1e02eb25d1e4f87a88))
+* **cosmos:** wire swingset RestoreExtension ([c94e49d](https://github.com/Agoric/agoric-sdk/commit/c94e49dbca2cfa4fc2e1ceb3617a5f1b6489a0a1))
+* **cosmos:** wire swingset SnapshotExtension ([7b0d99e](https://github.com/Agoric/agoric-sdk/commit/7b0d99ed1db8fa85757de994b7cf3a82fb967244))
+* **vstorage:** Export sub tree ([726e188](https://github.com/Agoric/agoric-sdk/commit/726e188481f4286583e48e6c3d87b654a7dd8d73))
+* add new bean cost for bytes in permanent storage ([b2118b1](https://github.com/Agoric/agoric-sdk/commit/b2118b1afc3421e00387ff2246f0723f4ccedf94))
+* **events:** only single base64 encode and augment with anchors ([1739e7d](https://github.com/Agoric/agoric-sdk/commit/1739e7d849063d3bde4f96e684ea78afa8ead703))
+* **vstorage:** Add placeholder migration logic ([35a3848](https://github.com/Agoric/agoric-sdk/commit/35a384862ac03123b54b7bc99743c41cf7a62c8d))
+* **vstorage:** batch and dedupe events per block ([312b608](https://github.com/Agoric/agoric-sdk/commit/312b60818835865de48cf3252819c56152f5876c))
+* **vstorage:** Handle explicit delete of path ([f46557d](https://github.com/Agoric/agoric-sdk/commit/f46557d424840d7dfa3ca2b817175c707a53540f))
+* null handlers for upgrade-10 ([267dc41](https://github.com/Agoric/agoric-sdk/commit/267dc41aa6e1e6e454cc85e8479e4a5969ec378d))
+* null upgrade handler for upgrade-9 ([d6bf056](https://github.com/Agoric/agoric-sdk/commit/d6bf056369fc6b8816ca0e1fcb580d88a48ea06b))
+* **vstorage:** separate `set`, `legacySet` and `setWithoutNotify` ([a242a0e](https://github.com/Agoric/agoric-sdk/commit/a242a0e7670300f2ac67eaf5d163d9ea13fff65c))
+
+
+### Bug Fixes
+
+* don't ignore error return from RegisterMigration ([e09822b](https://github.com/Agoric/agoric-sdk/commit/e09822bcafb5a48a9b1167bc6c05d810c417a35d))
+* **cosmic-swingset:** Use BigInt for chainQueue bounds ([40a8abb](https://github.com/Agoric/agoric-sdk/commit/40a8abb5aeac9237613fd50e4bbacb33f8057ed9))
+* correctly count the swingset messages in a cosmos message ([daa16b1](https://github.com/Agoric/agoric-sdk/commit/daa16b13e27d99458a7f06d3c1be3b88a11768e0))
+* dont reflect key back in error ([a5309bb](https://github.com/Agoric/agoric-sdk/commit/a5309bb59a651e9a4eb54dbf2a65ed72657ca755))
+* pass msg into go func ([2b4248c](https://github.com/Agoric/agoric-sdk/commit/2b4248ca3df5af1fda5e1a7ee5d3f93184edbbb7))
+* restore MsgDeliverInbound as one inbound message ([19e3f07](https://github.com/Agoric/agoric-sdk/commit/19e3f071b19f64e6f443ac31d76976ed91ac0e06))
+
+
+### Reverts
+
+* Revert "fix: disable state-sync by default, until we've implemented it" ([30340fb](https://github.com/Agoric/agoric-sdk/commit/30340fbf14caaa0decb1dc1c0dd2ecec150c38d6))
+
+
+
 ### [0.32.2](https://github.com/Agoric/agoric-sdk/compare/@agoric/cosmos@0.32.1...@agoric/cosmos@0.32.2) (2022-10-18)
 
 

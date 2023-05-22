@@ -6,10 +6,7 @@
 import { test as anyTest } from '@agoric/zoe/tools/prepare-test-env-ava.js';
 
 import { Fail, NonNullish } from '@agoric/assert';
-import {
-  makeParseAmount,
-  Offers,
-} from '@agoric/inter-protocol/src/clientSupport.js';
+import { Offers } from '@agoric/inter-protocol/src/clientSupport.js';
 import {
   SECONDS_PER_HOUR,
   SECONDS_PER_MINUTE,
@@ -347,7 +344,6 @@ test.serial('scenario: Flow 1', async t => {
     //  Place bids
     // ---------------
 
-    const parseAmount = makeParseAmount(agoricNamesRemotes, Error);
     await buyer.sendOffer(
       Offers.psm.swap(
         agoricNamesRemotes.instance['psm-IST-USDC_axl'],
@@ -368,7 +364,6 @@ test.serial('scenario: Flow 1', async t => {
       give: setup.bids[0].give,
       discount: setup.bids[0].discount,
       maxBuy,
-      parseAmount,
     });
 
     t.like(readLatest('published.wallet.agoric1buyer'), {
@@ -383,7 +378,6 @@ test.serial('scenario: Flow 1', async t => {
       give: setup.bids[1].give,
       price: setup.bids[1].price,
       maxBuy,
-      parseAmount,
     });
     t.like(readLatest('published.wallet.agoric1buyer'), {
       status: {
@@ -397,7 +391,6 @@ test.serial('scenario: Flow 1', async t => {
       give: setup.bids[2].give,
       discount: setup.bids[2].discount,
       maxBuy,
-      parseAmount,
     });
   }
   t.like(readLatest('published.wallet.agoric1buyer'), {

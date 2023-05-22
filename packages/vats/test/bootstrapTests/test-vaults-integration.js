@@ -13,8 +13,8 @@ import {
   makeAgoricNamesRemotesFromFakeStorage,
   slotToBoardRemote,
 } from '../../tools/board-utils.js';
-import { makeSwingsetTestKit } from './supports.js';
 import { makeWalletFactoryDriver } from './drivers.js';
+import { makeSwingsetTestKit } from './supports.js';
 
 /**
  * @type {import('ava').TestFn<Awaited<ReturnType<typeof makeDefaultTestContext>>>}
@@ -252,7 +252,7 @@ test('open vault with insufficient funds gives helpful error', async t => {
 });
 
 test('exit bid', async t => {
-  const { walletFactoryDriver, agoricNamesRemotes } = t.context;
+  const { walletFactoryDriver } = t.context;
 
   const wd = await walletFactoryDriver.provideSmartWallet('agoric1bid');
 
@@ -264,23 +264,11 @@ test('exit bid', async t => {
     giveCollateral: 9.0,
   });
 
-  const parseAmount = opt => {
-    const m = opt.match(/^(?<value>[\d_.]+)(?<brand>\w+?)$/);
-    assert(m);
-    return {
-      value: BigInt(Number(m.groups.value.replace(/_/g, '')) * 1_000_000),
-      /** @type {Brand<'nat'>} */
-      // @ts-expect-error mock
-      brand: agoricNamesRemotes.brand[m.groups.brand],
-    };
-  };
-
   wd.sendOfferMaker(Offers.auction.Bid, {
     offerId: 'bid',
     maxBuy: '1.23ATOM',
     give: '0.1IST',
     price: 5,
-    parseAmount,
   });
 
   await wd.tryExitOffer('bid');

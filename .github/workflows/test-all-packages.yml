@@ -51,6 +51,8 @@ jobs:
 
       - name: npm pack
         run: yarn lerna exec yarn pack
+      - name: dependency cycles
+        run: scripts/check-dependency-cycles.sh 6
 
   ##################
   # Lint tests

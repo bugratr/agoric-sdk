@@ -4,6 +4,7 @@ import '@endo/init/debug.js';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import test from 'ava';
 
+import { createHash } from 'crypto';
 import * as proc from 'child_process';
 import * as os from 'os';
 import fs from 'fs';
@@ -301,6 +302,44 @@ const writeAndReadSnapshot = async (t, snapshotUseFs) => {
 };
 test('write and read snapshot (use FS)', writeAndReadSnapshot, true);
 test('write and read snapshot (use stream)', writeAndReadSnapshot, false);
+
+test('produce golden snapshot hashes', async t => {
+  const toEvals = [
+    [`no evaluations`, ''],
+    [
+      `smallish safeInteger multiplication doesn't spill to XS_NUMBER_KIND`,
+      `globalThis.bazinga = 100; globalThis.bazinga *= 1_000_000;`,
+    ],
+  ];
+  for await (const [description, toEval] of toEvals) {
+    t.log(description);
+    const messages = [];
+    async function handleCommand(message) {
+      messages.push(decode(message));
+      return new Uint8Array();
+    }
+
+    const vat0 = await xsnap({
+      ...options(io),
+      handleCommand,
+      snapshotUseFs: false,
+    });
+    if (toEval) {
+      await vat0.evaluate(toEval);
+    }
+
+    const hash = createHash('sha256');
+    for await (const buf of vat0.makeSnapshotStream()) {
+      hash.update(buf);
+    }
+    await vat0.close();
+
+    const hexHash = hash.digest('hex');
+    t.log(hexHash);
+    t.snapshot(hexHash, description);
+    t.deepEqual(messages, [], `${description} messages`);
+  }
+});
 
 test('execute immediately after makeSnapshotStream', async t => {
   const messages = [];

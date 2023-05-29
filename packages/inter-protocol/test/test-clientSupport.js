@@ -140,4 +140,11 @@ test('amt tagged template', t => {
   const amt = makeAmountTemplate(agoricNames);
   t.deepEqual(amt`3.0IST`, AmountMath.make(brands.IST, 3_000_000n));
   t.deepEqual(amt`0.000001ATOM`, AmountMath.make(brands.ATOM, 1n));
+
+  t.deepEqual(amt`0.000001 ATOM`, AmountMath.make(brands.ATOM, 1n));
+  t.throws(
+    () => amt`0.000001 ATOM `,
+    { message: 'invalid amount: 0.000001 ATOM ' },
+    'trailing whitespace',
+  );
 });

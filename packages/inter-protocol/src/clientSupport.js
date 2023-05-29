@@ -391,3 +391,17 @@ export const Offers = {
     AddCollateral: makeAddCollateralOffer,
   },
 };
+
+/**
+ *
+ * @param {import('@agoric/vats/tools/board-utils.js').AgoricNamesRemotes} agoricNames
+ */
+export const makeAmountTemplate = agoricNames => {
+  const parseAmount = makeParseAmount(agoricNames);
+  /** @param {TemplateStringsArray} strings */
+  const template = strings => {
+    strings.length === 1 || Fail`expected one string without values`;
+    return parseAmount(strings[0]);
+  };
+  return template;
+};

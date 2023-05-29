@@ -1,8 +1,8 @@
 import { test } from '@agoric/zoe/tools/prepare-test-env-ava.js';
 
-import { makeIssuerKit } from '@agoric/ertp';
+import { AmountMath, makeIssuerKit } from '@agoric/ertp';
 import { makeRatio } from '@agoric/zoe/src/contractSupport/ratio.js';
-import { Offers } from '../src/clientSupport.js';
+import { Offers, makeAmountTemplate } from '../src/clientSupport.js';
 import { withAmountUtils } from './supports.js';
 
 const ist = withAmountUtils(makeIssuerKit('IST'));
@@ -134,4 +134,10 @@ test('Offers.auction.Bid', async t => {
       }),
     { message: 'missing ["maxBuy"]' },
   );
+});
+
+test('amt tagged template', t => {
+  const amt = makeAmountTemplate(agoricNames);
+  t.deepEqual(amt`3.0IST`, AmountMath.make(brands.IST, 3_000_000n));
+  t.deepEqual(amt`0.000001ATOM`, AmountMath.make(brands.ATOM, 1n));
 });
